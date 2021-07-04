@@ -8,8 +8,6 @@ export const fetchProductsBegin = () => ({
     type: types.FETCH_PRODUCTS_BEGIN
 });
 
-
-
 export const receiveProducts = products => ({
     type: types.RECEIVE_PRODUCTS,
     products
