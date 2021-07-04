@@ -154,6 +154,6 @@
   },
   "devDependencies": {
     "babel-eslint": "^9.0.0",
-    "webpack": "^4.41.2"
+    "webpack": "^5.42.0"
   }
 }
