@@ -38,9 +38,9 @@ class NavBar extends Component {
         if (event.target.classList.contains('sub-arrow'))
             return;
 
-        if(event.target.nextElementSibling.classList.contains('opensubmenu'))
+        if (event.target.nextElementSibling.classList.contains('opensubmenu'))
             event.target.nextElementSibling.classList.remove('opensubmenu')
-        else{
+        else {
             document.querySelectorAll('.nav-submenu').forEach(function (value) {
                 value.classList.remove('opensubmenu');
             });
@@ -52,10 +52,10 @@ class NavBar extends Component {
     handleMegaSubmenu = (event) => {
         if (event.target.classList.contains('sub-arrow'))
             return;
-            
-        if(event.target.parentNode.nextElementSibling.classList.contains('opensubmegamenu'))
+
+        if (event.target.parentNode.nextElementSibling.classList.contains('opensubmegamenu'))
             event.target.parentNode.nextElementSibling.classList.remove('opensubmegamenu')
-        else{
+        else {
             document.querySelectorAll('.menu-content').forEach(function (value) {
                 value.classList.remove('opensubmegamenu');
             });
@@ -254,7 +254,7 @@ class NavBar extends Component {
                                     </div>
                                 </div>
                             </li>
-                            <li>
+                            {/* <li>
                                 <Link to="#" className="nav-link" onClick={(e) => this.handleSubmenu(e)}>
                                     {translate('pages')}
                                     <span className="sub-arrow"></span>
@@ -272,18 +272,7 @@ class NavBar extends Component {
                                     <li><Link to={`${process.env.PUBLIC_URL}/pages/dashboard`} >{translate('dashboard')}</Link></li>
                                     <li><Link to={`${process.env.PUBLIC_URL}/pages/faq`} >{translate('FAQ')}</Link></li>
                                 </ul>
-                            </li>
-                            <li >
-                                <Link to="#" className="nav-link" onClick={(e) => this.handleSubmenu(e)}>
-                                    {translate('blog')}
-                                    <span className="sub-arrow"></span>
-                                </Link>
-                                <ul className="nav-submenu">
-                                    <li><Link to={`${process.env.PUBLIC_URL}/blog/blog-page`} >{translate('blog_left_sidebar')}</Link></li>
-                                    <li><Link to={`${process.env.PUBLIC_URL}/blog/right-sidebar`} >{translate('blog_right_sidebar')}</Link></li>
-                                    <li><Link to={`${process.env.PUBLIC_URL}/blog/details`} >{translate('blog_detail')}</Link></li>
-                                </ul>
-                            </li>
+                            </li> */}
                         </ul>
                     </div>
                 </div>
