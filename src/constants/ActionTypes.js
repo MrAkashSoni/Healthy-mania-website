@@ -1,4 +1,7 @@
 
+// Users
+export const SET_USER = 'SET_USER'
+
 // Get Products
 export const FETCH_PRODUCTS_BEGIN = 'FETCH_PRODUCTS_BEGIN'
 export const RECEIVE_PRODUCTS = 'RECEIVE_PRODUCTS'
