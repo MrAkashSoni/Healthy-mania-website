@@ -13,9 +13,9 @@ import store from "../store";
 
 export const createUser = (data) => async (dispatch) => {
     try {
-        const response = await axios.post(`${BASE_URL}/${USER_SIGNUP}`, data);
+        const response = await axios.post(`${BASE_URL}/${USER_SIGNUP}/`, data);
         console.log('response', response)
-        if (response.statusCode === 201) {
+        if (response.status === 201) {
             toast.success("User registered sucessfully!");
             return true;
         }
@@ -37,7 +37,7 @@ export const loginUser = (data) => async (dispatch) => {
     try {
         const response = await axios.post(`${BASE_URL}/${USER_LOGIN}`, data);
         console.log('response', response)
-        if (response.statusCode === 200) {
+        if (response.status === 200) {
             toast.success("User registered sucessfully!");
             return true;
         }
