@@ -1,5 +1,5 @@
 # Healthy-mania-website
 
-yarn install or npm install
+yarn install
 
-yarn start or npm start
+yarn start
