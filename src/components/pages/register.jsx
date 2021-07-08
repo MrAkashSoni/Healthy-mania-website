@@ -1,36 +1,41 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
+import store from '../../store';
 import Breadcrumb from "../common/breadcrumb";
-import {createUser} from '../../actions/authActions';
+import { createUser } from '../../actions/authActions';
 
 class Register extends Component {
 
-    constructor (props) {
-        super (props);
+    constructor(props) {
+        super(props);
     }
 
     state = {
-        data: { },
+        data: {},
     }
 
     handleChange = (e) => {
-        const obj = {...this.state.data}
+        const obj = { ...this.state.data }
         obj[e.target.name] = e.target.value;
         this.setState({
             data: obj,
         })
     }
 
-    handleSubmit = () => {
-        console.log('this.state.data', this.state.data)
-        createUser(this.state.data);
+    handleSubmit = async () => {
+        const res = await store.dispatch(createUser(this.state.data));
+        if (res) {
+            this.props.history.push({
+                pathname: '/pages/login',
+            })
+        }
     }
 
-    render (){
+    render() {
         return (
             <div>
-                <Breadcrumb title={'create account'}/>
-  
+                <Breadcrumb title={'create account'} />
+
                 {/*Regsiter section*/}
                 <section className="register-page section-b-space">
                     <div className="container">
@@ -47,20 +52,20 @@ class Register extends Component {
                                                     className="form-control"
                                                     id="fname"
                                                     placeholder="First Name"
-                                                    required="" 
+                                                    required=""
                                                     name="first_name"
                                                     onChange={this.handleChange}
-                                                    />
+                                                />
                                             </div>
                                             <div className="col-md-6">
                                                 <label htmlFor="review">Last Name</label>
-                                                <input 
+                                                <input
                                                     type="text"
-                                                    className="form-control" 
+                                                    className="form-control"
                                                     id="lname"
-                                                    placeholder="Last Name" 
+                                                    placeholder="Last Name"
                                                     name="last_name"
-                                                    required="" 
+                                                    required=""
                                                     onChange={this.handleChange}
                                                 />
                                             </div>
@@ -68,70 +73,70 @@ class Register extends Component {
                                         <div className="form-row">
                                             <div className="col-md-6">
                                                 <label htmlFor="email">email</label>
-                                                <input 
-                                                    type="text" 
-                                                    className="form-control" 
+                                                <input
+                                                    type="text"
+                                                    className="form-control"
                                                     id="email"
                                                     placeholder="Email"
-                                                    name="email" 
+                                                    name="email"
                                                     required=""
                                                     onChange={this.handleChange}
                                                 />
                                             </div>
                                             <div className="col-md-6">
-                                            <label htmlFor="pnumber">Phone number</label>
+                                                <label htmlFor="pnumber">Phone number</label>
                                                 <input type="text"
                                                     className="form-control"
                                                     id="pnumber"
                                                     placeholder="Phone Number"
-                                                    required="" 
+                                                    required=""
                                                     name="phone_number"
                                                     onChange={this.handleChange}
-                                                    />
+                                                />
                                             </div>
                                         </div>
                                         <div className="form-row">
                                             <div className="col-md-6">
                                                 <label htmlFor="password">Password</label>
-                                                <input 
-                                                    type="password" 
-                                                    className="form-control" 
+                                                <input
+                                                    type="password"
+                                                    className="form-control"
                                                     id="password"
                                                     placeholder="Enter your password"
-                                                    name="password1" 
-                                                    required="" 
+                                                    name="password1"
+                                                    required=""
                                                     onChange={this.handleChange}
                                                 />
                                             </div>
                                             <div className="col-md-6">
                                                 <label htmlFor="password">Confirm Password</label>
-                                                <input 
-                                                    type="password" 
-                                                    className="form-control" 
+                                                <input
+                                                    type="password"
+                                                    className="form-control"
                                                     id="cpassword"
                                                     placeholder="Reenter your password"
                                                     name="password2"
-                                                    required="" 
+                                                    required=""
                                                     onChange={this.handleChange}
                                                 />
                                             </div>
                                         </div>
-                                        
+
                                         <div className="form-row">
                                             <div className="col-md-6">
-                                            <label htmlFor="referal">Referral  Code</label>
-                                                <input 
+                                                <label htmlFor="referal">Referral  Code</label>
+                                                <input
                                                     type="text"
-                                                    className="form-control" 
+                                                    className="form-control"
                                                     id="rcode"
-                                                    placeholder="Referral Code" 
-                                                    name="ref_code" 
+                                                    placeholder="Referral Code"
+                                                    name="ref_code"
                                                     onChange={this.handleChange}
                                                 />
                                             </div>
                                         </div>
-                                            <button className="btn btn-solid" onClick={this.handleSubmit}>create Account</button>
-                                    {/* </form> */}
+                                        <button className="btn btn-solid" onClick={this.handleSubmit}>create Account</button>
+                                        {/* </form> */}
                                     </div>
                                 </div>
                             </div>
