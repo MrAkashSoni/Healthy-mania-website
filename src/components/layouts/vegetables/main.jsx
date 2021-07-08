@@ -18,7 +18,6 @@ import FooterOne from "../../common/footers/footer-one"
 import ThemeSettings from "../../common/theme-settings"
 
 class Vegetables extends Component {
-
     componentDidMount() {
         document.getElementById("color").setAttribute("href", `#`);
     }

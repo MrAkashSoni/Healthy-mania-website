@@ -1,4 +1,7 @@
 
+// Users
+export const SET_USER = 'SET_USER'
+
 // Get Products
 export const FETCH_PRODUCTS_BEGIN = 'FETCH_PRODUCTS_BEGIN'
 export const RECEIVE_PRODUCTS = 'RECEIVE_PRODUCTS'
@@ -37,3 +40,5 @@ export const CHECKOUT_REQUEST = 'CHECKOUT_REQUEST'
 export const CHECKOUT_SUCCESS = 'CHECKOUT_SUCCESS'
 export const CHECKOUT_FAILURE = 'CHECKOUT_FAILURE'
 
+// Users
+export const USER_DETAIL = 'USER_DETAIL'
