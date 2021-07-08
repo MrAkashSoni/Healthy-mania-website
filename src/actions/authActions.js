@@ -13,8 +13,7 @@ import store from "../store";
 
 export const createUser = (data) => async (dispatch) => {
     try {
-        const response = await axios.post(`${BASE_URL}/${USER_SIGNUP}/`, data);
-        console.log('response', response)
+        const response = await axios.post(`${BASE_URL}/${USER_SIGNUP}`, data);
         if (response.status === 201) {
             toast.success("User registered sucessfully!");
             return true;
@@ -25,10 +24,7 @@ export const createUser = (data) => async (dispatch) => {
         }
     }
     catch (error) {
-        console.log('error', error);
-        console.log('error.response', error.response);
-
-        toast.error(error.response);
+        toast.error(error.response.data);
         return false;
     }
 }
@@ -36,9 +32,8 @@ export const createUser = (data) => async (dispatch) => {
 export const loginUser = (data) => async (dispatch) => {
     try {
         const response = await axios.post(`${BASE_URL}/${USER_LOGIN}`, data);
-        console.log('response', response)
         if (response.status === 200) {
-            toast.success("User registered sucessfully!");
+            toast.success("User logged in sucessfully!");
             return true;
         }
         else {
@@ -47,9 +42,6 @@ export const loginUser = (data) => async (dispatch) => {
         }
     }
     catch (error) {
-        console.log('error', error);
-        console.log('error.response', error.response);
-
         toast.error(error.response);
         return false;
     }
