@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 
 import Breadcrumb from "../common/breadcrumb";
+import {createUser} from '../../actions/authActions';
 
 class Register extends Component {
 
@@ -22,6 +23,7 @@ class Register extends Component {
 
     handleSubmit = () => {
         console.log('this.state.data', this.state.data)
+        createUser(this.state.data);
     }
 
     render (){
