@@ -1,22 +1,41 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
+import store from '../../store';
 import Breadcrumb from "../common/breadcrumb";
+import { loginUser } from '../../actions/authActions';
 
 class Login extends Component {
 
-    constructor (props) {
-        super (props)
+    constructor(props) {
+        super(props)
 
     }
 
-    render (){
+    state = {
+        data: {},
+    }
 
+    handleChange = (e) => {
+        const obj = { ...this.state.data }
+        obj[e.target.name] = e.target.value;
+        this.setState({
+            data: obj,
+        })
+    }
 
+    handleSubmit = async () => {
+        const res = await store.dispatch(loginUser(this.state.data));
+        if (res) {
+            this.props.history.push({
+                pathname: '/dashboard',
+            })
+        }
+    }
+
+    render() {
         return (
             <div>
-                <Breadcrumb title={'Login'}/>
-                
-                
+                <Breadcrumb title={'Login'} />
                 {/*Login section*/}
                 <section className="login-page section-b-space">
                     <div className="container">
@@ -24,19 +43,34 @@ class Login extends Component {
                             <div className="col-lg-6">
                                 <h3>Login</h3>
                                 <div className="theme-card">
-                                    <form className="theme-form">
-                                        <div className="form-group">
-                                            <label htmlFor="email">Email</label>
-                                            <input type="text" className="form-control" id="email" placeholder="Email"
-                                                   required="" />
-                                        </div>
-                                        <div className="form-group">
-                                            <label htmlFor="review">Password</label>
-                                            <input type="password" className="form-control" id="review"
-                                                   placeholder="Enter your password" required="" />
-                                        </div>
-                                        <a href="#" className="btn btn-solid">Login</a>
-                                    </form>
+                                    {/* <form className="theme-form"> */}
+                                    <div className="theme-form"></div>
+                                    <div className="form-group">
+                                        <label htmlFor="email">Email</label>
+                                        <input
+                                            type="text"
+                                            className="form-control"
+                                            id="email"
+                                            placeholder="Email"
+                                            name="email"
+                                            required=""
+                                            onChange={this.handleChange}
+                                        />
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="review">Password</label>
+                                        <input
+                                            type="password"
+                                            className="form-control"
+                                            id="password"
+                                            placeholder="Enter your password"
+                                            name="password"
+                                            required=""
+                                            onChange={this.handleChange}
+                                        />
+                                    </div>
+                                    <button className="btn btn-solid" onClick={this.handleSubmit}>Login</button>
+                                    {/* </form> */}
                                 </div>
                             </div>
                             <div className="col-lg-6 right-login">
@@ -46,7 +80,7 @@ class Login extends Component {
                                     <p>Sign up for a free account at our store. Registration is quick and easy. It
                                         allows you to be able to order from our shop. To start shopping click
                                         register.</p>
-                                    <a href="#" className="btn btn-solid">Create an Account</a>
+                                    <a href="/pages/register" className="btn btn-solid">Create an Account</a>
                                 </div>
                             </div>
                         </div>
