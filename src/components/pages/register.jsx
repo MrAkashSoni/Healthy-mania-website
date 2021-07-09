@@ -8,11 +8,12 @@ class Register extends Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            data: {},
+            isLoading: false,
+        }
     }
 
-    state = {
-        data: {},
-    }
 
     handleChange = (e) => {
         const obj = { ...this.state.data }
@@ -23,8 +24,10 @@ class Register extends Component {
     }
 
     handleSubmit = async () => {
+        this.setState({ isLoading: true })
         const res = await store.dispatch(createUser(this.state.data));
         if (res) {
+            this.setState({ isLoading: false })
             this.props.history.push({
                 pathname: '/pages/login',
             })
@@ -45,6 +48,9 @@ class Register extends Component {
                                 <div className="theme-card">
                                     {/* <form className="theme-form"> */}
                                     <div className="theme-form">
+                                        {this.state.isLoading && (
+                                            <div className="loading-cls"></div>
+                                        )}
                                         <div className="form-row">
                                             <div className="col-md-6">
                                                 <label htmlFor="email">First Name</label>
@@ -103,7 +109,7 @@ class Register extends Component {
                                                     className="form-control"
                                                     id="password"
                                                     placeholder="Enter your password"
-                                                    name="password1"
+                                                    name="password"
                                                     required=""
                                                     onChange={this.handleChange}
                                                 />
@@ -115,7 +121,7 @@ class Register extends Component {
                                                     className="form-control"
                                                     id="cpassword"
                                                     placeholder="Reenter your password"
-                                                    name="password2"
+                                                    name="confirm_password"
                                                     required=""
                                                     onChange={this.handleChange}
                                                 />

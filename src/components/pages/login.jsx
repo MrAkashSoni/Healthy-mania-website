@@ -10,9 +10,9 @@ class Login extends Component {
         super(props)
         this.state = {
             data: {},
-            userDetail: {}
+            userDetail: {},
+            isLoading: false,
         }
-        console.log('getState', store.getState())
     }
 
     handleChange = (e) => {
@@ -24,11 +24,12 @@ class Login extends Component {
     }
 
     handleSubmit = async () => {
-        console.log('store.dispatch', store.dispatch)
+        this.setState({ isLoading: true })
         const res = await store.dispatch(loginUser(this.state.data));
         if (res) {
+            this.setState({ isLoading: false })
             this.props.history.push({
-                pathname: '/dashboard',
+                pathname: '/',
             })
         }
     }
@@ -39,14 +40,17 @@ class Login extends Component {
                 <Breadcrumb title={'Login'} />
                 {/*Login section*/}
                 <section className="login-page section-b-space">
+
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-6">
                                 <h3>Login</h3>
-                                <div className="theme-card">
-                                    {/* <form className="theme-form"> */}
-                                    <div className="theme-form"></div>
+                                {/* <form className="theme-form"> */}
+                                <div className="theme-form">
                                     <div className="form-group">
+                                        {this.state.isLoading && (
+                                            <div className="loading-cls"></div>
+                                        )}
                                         <label htmlFor="email">Email</label>
                                         <input
                                             type="text"

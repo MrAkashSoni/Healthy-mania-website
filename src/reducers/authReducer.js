@@ -9,8 +9,6 @@ const INITIAL_STATE = {
 }
 
 export default function authReducer(state = INITIAL_STATE, action) {
-    console.log('actions', action)
-    console.log('state', state)
     switch (action.type) {
         case USER_LOADING:
             return {
