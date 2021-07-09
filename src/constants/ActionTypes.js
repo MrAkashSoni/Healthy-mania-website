@@ -41,4 +41,5 @@ export const CHECKOUT_SUCCESS = 'CHECKOUT_SUCCESS'
 export const CHECKOUT_FAILURE = 'CHECKOUT_FAILURE'
 
 // Users
+export const USER_LOADING = 'USER_LOADING'
 export const USER_DETAIL = 'USER_DETAIL'

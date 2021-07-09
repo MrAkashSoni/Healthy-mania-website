@@ -8,11 +8,11 @@ class Login extends Component {
 
     constructor(props) {
         super(props)
-
-    }
-
-    state = {
-        data: {},
+        this.state = {
+            data: {},
+            userDetail: {}
+        }
+        console.log('getState', store.getState())
     }
 
     handleChange = (e) => {
@@ -24,6 +24,7 @@ class Login extends Component {
     }
 
     handleSubmit = async () => {
+        console.log('store.dispatch', store.dispatch)
         const res = await store.dispatch(loginUser(this.state.data));
         if (res) {
             this.props.history.push({
@@ -92,4 +93,4 @@ class Login extends Component {
     }
 }
 
-export default Login
+export default Login;
