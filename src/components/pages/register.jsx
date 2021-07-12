@@ -31,6 +31,8 @@ class Register extends Component {
             this.props.history.push({
                 pathname: '/pages/login',
             })
+        } else {
+            this.setState({ isLoading: false })
         }
     }
 

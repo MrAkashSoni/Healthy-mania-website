@@ -23,8 +23,9 @@ class Special extends Component {
         return (
             <div>
                 {/*Paragraph*/}
+                {/*                 
                 <section className="section-b-space addtocart_count">
-                    <div className="full-box">
+                    <div className="full-box"> 
                         <div className="container">
                             <div className="title4">
                                 <h2 className="title-inner4">special products</h2>
@@ -154,6 +155,7 @@ class Special extends Component {
                         </div>
                     </div>
                 </section>
+                */}
             </div>
         )
     }

@@ -31,6 +31,8 @@ class Login extends Component {
             this.props.history.push({
                 pathname: '/',
             })
+        } else {
+            this.setState({ isLoading: false })
         }
     }
 

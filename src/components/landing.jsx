@@ -10,7 +10,8 @@ class Landing extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            toggle: false
+            toggle: false,
+            isLoading: false,
         }
     }
 
@@ -60,7 +61,7 @@ class Landing extends Component {
 
     render() {
         return (
-            <div className="landing-page-multikart">
+            <div className="landing-page-multikart" >
                 <header id="sticky" className="sticky">
                     <div className="container-fluid">
                         <div className="row">
@@ -1036,7 +1037,7 @@ class Landing extends Component {
                     </div>
                 </div>
 
-            </div>
+            </div >
         );
     }
 }

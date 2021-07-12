@@ -21,7 +21,6 @@ export const createUser = (data) => async (dispatch) => {
     try {
         dispatch(isLoading(true));
         const response = await axios.post(`${BASE_URL}/${USER_SIGNUP}`, data);
-        console.log('register response  ->', response)
         if (response.status === 201) {
             toast.success("User registered sucessfully!");
             dispatch(isLoading(false));
@@ -34,7 +33,6 @@ export const createUser = (data) => async (dispatch) => {
         }
     }
     catch (error) {
-        console.log('register error', error.response)
         toast.error(error.response.data.message);
         dispatch(isLoading(false));
         return false;
@@ -45,7 +43,6 @@ export const loginUser = (data) => async (dispatch) => {
     try {
         dispatch(isLoading(true));
         const response = await axios.post(`${BASE_URL}/${USER_LOGIN}`, data);
-        console.log('response', response)
         if (response.status === 200) {
             toast.success("User logged in sucessfully!");
             dispatch({
@@ -62,7 +59,6 @@ export const loginUser = (data) => async (dispatch) => {
         }
     }
     catch (error) {
-        console.log('login error', error.response)
         toast.error(error.response.data.message);
         dispatch(isLoading(false));
         return false;

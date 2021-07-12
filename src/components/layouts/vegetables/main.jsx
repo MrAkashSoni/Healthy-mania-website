@@ -5,6 +5,7 @@ import Slider from 'react-slick';
 import { Link } from 'react-router-dom';
 
 // Import custom components
+import store from '../../../store';
 import { Slider3 } from "../../../services/script"
 import Trading from "./tranding"
 import Special from "../common/special"
@@ -18,14 +19,16 @@ import FooterOne from "../../common/footers/footer-one"
 import ThemeSettings from "../../common/theme-settings"
 
 class Vegetables extends Component {
-    componentDidMount() {
+    async componentDidMount() {
         document.getElementById("color").setAttribute("href", `#`);
+
+        const { products } = await store.getState().data;
     }
     render() {
         return (
             <div>
                 <Helmet>
-                    <title>MultiKart | Vegetable Store</title>
+                    <title>Healthy Mania | Nutritions</title>
                 </Helmet>
                 <HeaderTwo logoName={'logo.png'} />
                 <section className="p-0">
@@ -38,7 +41,7 @@ class Vegetables extends Component {
                                             <div className="slider-contain">
                                                 <div>
                                                     <h4>save 10%</h4>
-                                                    <h1>fresh vegetables</h1><a href="#" className="btn btn-solid">shop
+                                                    <h1>fresh vegetables.</h1><a href="#" className="btn btn-solid">shop
                                                         now</a></div>
                                             </div>
                                         </div>

@@ -9,7 +9,7 @@ import './index.scss';
 // Import custom components
 import store from './store';
 import translations from './constants/translations'
-import { getAllProducts } from './actions'
+import { getAllProducts } from './actions/productActions'
 import Landing from './components/landing'
 
 
