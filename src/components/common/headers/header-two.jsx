@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, NavLink} from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { IntlActions } from 'react-redux-multilingual'
 import Pace from 'react-pace-progress'
 
@@ -10,8 +10,8 @@ import SideBar from "./common/sidebar";
 import CartContainer from "./../../../containers/CartContainer";
 import TopBar from "./common/topbar";
 import LogoImage from "./common/logo";
-import {changeCurrency} from '../../../actions'
-import {connect} from "react-redux";
+import { changeCurrency } from '../../../actions'
+import { connect } from "react-redux";
 
 class HeaderTwo extends Component {
 
@@ -19,7 +19,7 @@ class HeaderTwo extends Component {
         super(props);
 
         this.state = {
-            isLoading:false
+            isLoading: false
         }
     }
 
@@ -27,12 +27,12 @@ class HeaderTwo extends Component {
          Pre loader
          ==========================*/
     componentDidMount() {
-        setTimeout(function() {
+        setTimeout(function () {
             document.querySelector(".loader-wrapper").style = "display: none";
         }, 2000);
     }
 
-    componentWillMount(){
+    componentWillMount() {
         window.addEventListener('scroll', this.handleScroll);
     }
     componentWillUnmount() {
@@ -45,7 +45,7 @@ class HeaderTwo extends Component {
         if (number >= 300) {
             if (window.innerWidth < 576) {
                 document.getElementById("sticky").classList.remove('fixed');
-            }else
+            } else
                 document.getElementById("sticky").classList.add('fixed');
         } else {
             document.getElementById("sticky").classList.remove('fixed');
@@ -58,7 +58,7 @@ class HeaderTwo extends Component {
 
     openNav() {
         var openmyslide = document.getElementById("mySidenav");
-        if(openmyslide){
+        if (openmyslide) {
             openmyslide.classList.add('open-side')
         }
     }
@@ -70,11 +70,11 @@ class HeaderTwo extends Component {
         document.getElementById("search-overlay").style.display = "none";
     }
 
-    load = ()=>{
-        this.setState({isLoading: true});
-        fetch().then(()=>{
+    load = () => {
+        this.setState({ isLoading: true });
+        fetch().then(() => {
             // deal with data fetched
-            this.setState({isLoading: false})
+            this.setState({ isLoading: false })
         })
     };
 
@@ -83,10 +83,10 @@ class HeaderTwo extends Component {
         return (
             <div>
                 <header id="sticky" className="sticky">
-                    {this.state.isLoading ? <Pace color="#27ae60"/> : null}
+                    {this.state.isLoading ? <Pace color="#27ae60" /> : null}
                     <div className="mobile-fix-option"></div>
                     {/*Top Header Component*/}
-                    <TopBar/>
+                    <TopBar />
 
                     <div className="container">
                         <div className="row">
@@ -98,7 +98,7 @@ class HeaderTwo extends Component {
                                                 <div className="bar-style"> <i className="fa fa-bars sidebar-bar" aria-hidden="true"></i></div>
                                             </a>
                                             {/*SideBar Navigation Component*/}
-                                            <SideBar/>
+                                            <SideBar />
                                         </div>
                                     </div>
                                     <div className="brand-logo layout2-logo">
@@ -123,15 +123,15 @@ class HeaderTwo extends Component {
                                                             </ul>
                                                             <h6>currency</h6>
                                                             <ul className="list-inline">
-                                                                <li><a href={null} onClick={() => this.props.changeCurrency('€')}>euro</a> </li>
+                                                                {/* <li><a href={null} onClick={() => this.props.changeCurrency('€')}>euro</a> </li> */}
                                                                 <li><a href={null} onClick={() => this.props.changeCurrency('₹')}>rupees</a> </li>
-                                                                <li><a href={null} onClick={() => this.props.changeCurrency('£')}>pound</a> </li>
-                                                                <li><a href={null} onClick={() => this.props.changeCurrency('$')}>doller</a> </li>
+                                                                {/* <li><a href={null} onClick={() => this.props.changeCurrency('£')}>pound</a> </li>
+                                                                <li><a href={null} onClick={() => this.props.changeCurrency('$')}>doller</a> </li> */}
                                                             </ul>
                                                         </div>
                                                     </li>
                                                     {/*Header Cart Component */}
-                                                    <CartContainer/>
+                                                    <CartContainer />
                                                 </ul>
                                             </div>
                                         </div>
@@ -144,7 +144,7 @@ class HeaderTwo extends Component {
                         <div className="row">
                             <div className="col-lg-12">
                                 <div className="main-nav-center">
-                                    <NavBar/>
+                                    <NavBar />
                                 </div>
                             </div>
                         </div>

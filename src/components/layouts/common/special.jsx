@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Slider from 'react-slick';
-import {Link} from 'react-router-dom';
-import {connect} from 'react-redux'
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux'
 
-import {getSingleItem, getSpecialCollection} from '../../../services/index'
+import { getSingleItem, getSpecialCollection } from '../../../services/index'
 import {
     addToCart,
     addToWishlist,
@@ -16,13 +16,15 @@ import ProductItem from './special-product-item';
 
 class Special extends Component {
 
-    render (){
+    render() {
 
-        const {product, symbol, addToCart, addToWishlist, addToCompare, incrementQty, decrementQty, removeFromCart} = this.props;
+        const { product, symbol, addToCart, addToWishlist, addToCompare, incrementQty, decrementQty, removeFromCart } = this.props;
 
+        console.log('product', product)
         return (
             <div>
                 {/*Paragraph*/}
+
                 <section className="section-b-space addtocart_count">
                     <div className="full-box">
                         <div className="container">
@@ -40,18 +42,18 @@ class Special extends Component {
                                                         <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${product[0].id}`} >
                                                             <img
                                                                 className="img-fluid blur-up lazyload"
-                                                                src={product[0].pictures[0]} alt="" />
+                                                                src={product[0].picture} alt="" />
                                                         </Link>
                                                         <div className="media-body align-self-center">
                                                             <div className="rating"><i className="fa fa-star"></i> <i
                                                                 className="fa fa-star"></i> <i
-                                                                className="fa fa-star"></i> <i
-                                                                className="fa fa-star"></i> <i
-                                                                className="fa fa-star"></i></div>
+                                                                    className="fa fa-star"></i> <i
+                                                                        className="fa fa-star"></i> <i
+                                                                            className="fa fa-star"></i></div>
                                                             <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${product[0].id}`} >
                                                                 <h6>{product[0].name}</h6>
                                                             </Link>
-                                                            <h4>{symbol}{product[0].price-(product[0].price*product[0].discount/100)}
+                                                            <h4>{symbol}{product[0].price - (product[0].price * product[0].discount / 100)}
                                                                 <del><span className="money">{symbol}{product[0].price}</span></del>
                                                             </h4>
                                                         </div>
@@ -59,22 +61,22 @@ class Special extends Component {
                                                 </div>
                                                 <div className="product-box2">
                                                     <div className="media">
-                                                        <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${product[1].id}`} >
+                                                        <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${product[0].id}`} >
                                                             <img
                                                                 className="img-fluid blur-up lazyload"
-                                                                src={product[1].pictures[0]} alt="" />
+                                                                src={product[0].picture} alt="" />
                                                         </Link>
                                                         <div className="media-body align-self-center">
                                                             <div className="rating"><i className="fa fa-star"></i> <i
                                                                 className="fa fa-star"></i> <i
-                                                                className="fa fa-star"></i> <i
-                                                                className="fa fa-star"></i> <i
-                                                                className="fa fa-star"></i></div>
-                                                            <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${product[1].id}`} >
-                                                                <h6>{product[1].name}</h6>
+                                                                    className="fa fa-star"></i> <i
+                                                                        className="fa fa-star"></i> <i
+                                                                            className="fa fa-star"></i></div>
+                                                            <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${product[0].id}`} >
+                                                                <h6>{product[0].name}</h6>
                                                             </Link>
-                                                            <h4>{symbol}{product[1].price-(product[1].price*product[1].discount/100)}
-                                                                <del><span className="money">{symbol}{product[1].price}</span></del>
+                                                            <h4>{symbol}{product[0].price - (product[0].price * product[0].discount / 100)}
+                                                                <del><span className="money">{symbol}{product[0].price}</span></del>
                                                             </h4>
                                                         </div>
                                                     </div>
@@ -86,15 +88,16 @@ class Special extends Component {
                                 <div className="col-md-4 center-slider">
                                     <div>
                                         <div className="offer-slider">
-                                            <div>
-                                                <ProductItem product={product[2]} symbol={symbol}
-                                                             onAddToCompareClicked={() => addToCompare(product[2])}
-                                                             onAddToWishlistClicked={() => addToWishlist(product[2])}
-                                                             onAddToCartClicked={() => addToCart(product[2], 1)}
-                                                             onIncrementClicked={() => incrementQty(product[2], 1)}
-                                                             onDecrementClicked={() => decrementQty(product[2].id)}
-                                                             onRemoveFromCart={() => removeFromCart(product[2])}  />
-                                            </div>
+                                            {/* <div>
+                                                <ProductItem
+                                                    product={product[0]} symbol={symbol}
+                                                    onAddToCompareClicked={() => addToCompare(product[0])}
+                                                    onAddToWishlistClicked={() => addToWishlist(product[0])}
+                                                    onAddToCartClicked={() => addToCart(product[0], 1)}
+                                                    onIncrementClicked={() => incrementQty(product[0], 1)}
+                                                    onDecrementClicked={() => decrementQty(product[0].id)}
+                                                    onRemoveFromCart={() => removeFromCart(product[0])} />
+                                            </div> */}
                                         </div>
                                     </div>
                                 </div>
@@ -104,44 +107,44 @@ class Special extends Component {
                                             <div className="sec-1">
                                                 <div className="product-box2">
                                                     <div className="media">
-                                                        <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${product[3].id}`} >
+                                                        <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${product[0].id}`} >
                                                             <img
                                                                 className="img-fluid blur-up lazyload"
-                                                                src={product[3].pictures[0]} alt="" />
+                                                                src={product[0].picture} alt="" />
                                                         </Link>
                                                         <div className="media-body align-self-center">
                                                             <div className="rating"><i className="fa fa-star"></i> <i
                                                                 className="fa fa-star"></i> <i
-                                                                className="fa fa-star"></i> <i
-                                                                className="fa fa-star"></i> <i
-                                                                className="fa fa-star"></i></div>
-                                                            <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${product[3].id}`} >
-                                                                <h6>{product[3].name}</h6>
+                                                                    className="fa fa-star"></i> <i
+                                                                        className="fa fa-star"></i> <i
+                                                                            className="fa fa-star"></i></div>
+                                                            <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${product[0].id}`} >
+                                                                <h6>{product[0].name}</h6>
                                                             </Link>
-                                                            <h4>{symbol}{product[3].price-(product[3].price*product[3].discount/100)}
-                                                                <del><span className="money">{symbol}{product[3].price}</span></del>
+                                                            <h4>{symbol}{product[0].price - (product[0].price * product[0].discount / 100)}
+                                                                <del><span className="money">{symbol}{product[0].price}</span></del>
                                                             </h4>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div className="product-box2">
                                                     <div className="media">
-                                                        <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${product[4].id}`} >
+                                                        <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${product[0].id}`} >
                                                             <img
                                                                 className="img-fluid blur-up lazyload"
-                                                                src={product[4].pictures[0]} alt="" />
+                                                                src={product[0].picture} alt="" />
                                                         </Link>
                                                         <div className="media-body align-self-center">
                                                             <div className="rating"><i className="fa fa-star"></i> <i
                                                                 className="fa fa-star"></i> <i
-                                                                className="fa fa-star"></i> <i
-                                                                className="fa fa-star"></i> <i
-                                                                className="fa fa-star"></i></div>
-                                                            <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${product[4].id}`} >
-                                                                <h6>{product[4].name}</h6>
+                                                                    className="fa fa-star"></i> <i
+                                                                        className="fa fa-star"></i> <i
+                                                                            className="fa fa-star"></i></div>
+                                                            <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${product[0].id}`} >
+                                                                <h6>{product[0].name}</h6>
                                                             </Link>
-                                                            <h4>{symbol}{product[4].price-(product[4].price*product[4].discount/100)}
-                                                                <del><span className="money">{symbol}{product[4].price}</span></del>
+                                                            <h4>{symbol}{product[0].price - (product[0].price * product[0].discount / 100)}
+                                                                <del><span className="money">{symbol}{product[0].price}</span></del>
                                                             </h4>
                                                         </div>
                                                     </div>
@@ -154,22 +157,15 @@ class Special extends Component {
                         </div>
                     </div>
                 </section>
+
             </div>
         )
     }
 }
 
-const mapStateToProps = (state, Ownprops) => ({
-    product: getSpecialCollection(state.data.products, Ownprops.type),
-    symbol: state.data.symbol
-})
+// const mapStateToProps = (state, Ownprops) => ({
+//     product: getSpecialCollection(state.data.products, Ownprops.type),
+//     symbol: state.data.symbol
+// })
 
-export default connect(mapStateToProps,
-    {
-        addToCart,
-        addToWishlist,
-        addToCompare,
-        incrementQty,
-        decrementQty,
-        removeFromCart
-    }) (Special);
+export default Special;

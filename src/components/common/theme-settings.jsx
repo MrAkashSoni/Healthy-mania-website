@@ -1,17 +1,17 @@
-import React, {Component} from 'react';
-import {Link} from "react-router-dom"
+import React, { Component } from 'react';
+import { Link } from "react-router-dom"
 import { withTranslate } from 'react-redux-multilingual'
 
-import {SlideUpDown} from "../../services/script"
+import { SlideUpDown } from "../../services/script"
 import { ToastContainer } from 'react-toastify';
 
 class ThemeSettings extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
 
         this.state = {
-            divName:'RTL',
+            divName: 'RTL',
             themeLayout: false
         }
     }
@@ -20,7 +20,7 @@ class ThemeSettings extends Component {
     /*=====================
      Tap on Top
      ==========================*/
-    componentWillMount(){
+    componentWillMount() {
         window.addEventListener('scroll', this.handleScroll);
     }
     componentWillUnmount() {
@@ -33,8 +33,8 @@ class ThemeSettings extends Component {
             document.querySelector(".tap-top").style = "display: none";
         }
     }
-    clickToTop(){
-        window.scroll({top: 0, left: 0, behavior: 'smooth' })
+    clickToTop() {
+        window.scroll({ top: 0, left: 0, behavior: 'smooth' })
     }
 
     componentDidMount() {
@@ -51,40 +51,40 @@ class ThemeSettings extends Component {
     }
 
     // Color Picker
-    changeColor(event, color){
+    changeColor(event, color) {
         var elems = document.querySelectorAll(".color-box li");
-        [].forEach.call(elems, function(elemt) {
+        [].forEach.call(elems, function (elemt) {
             elemt.classList.remove('active');
         })
 
         event.target.classList.add('active');
         console.log(color)
-        document.getElementById("color").setAttribute("href", `${process.env.PUBLIC_URL}/assets/css/`+color+`.css` );
+        document.getElementById("color").setAttribute("href", `${process.env.PUBLIC_URL}/assets/css/` + color + `.css`);
     }
 
-    ChangeRtl(divName){
-        if(divName === 'RTL') {
+    ChangeRtl(divName) {
+        if (divName === 'RTL') {
             document.body.classList.add('rtl');
-            this.setState({divName: 'LTR'});
-        }else{
+            this.setState({ divName: 'LTR' });
+        } else {
             document.body.classList.remove('rtl');
-            this.setState({divName: 'RTL'});
+            this.setState({ divName: 'RTL' });
         }
     }
 
     changeThemeLayout() {
         this.setState({
-            themeLayout:!this.state.themeLayout
+            themeLayout: !this.state.themeLayout
         })
     }
 
     render() {
-        if(this.state.themeLayout){
+        if (this.state.themeLayout) {
             document.body.classList.add('dark');
-        }else{
+        } else {
             document.body.classList.remove('dark');
         }
-        let tap_to_top = {display: 'none'}
+        let tap_to_top = { display: 'none' }
 
         return (
             <div>
@@ -115,9 +115,9 @@ class ThemeSettings extends Component {
                                             <div className="demo-text">
                                                 <h4>Fashion</h4>
                                                 <div className="btn-group demo-btn" role="group"
-                                                     aria-label="Basic example">
+                                                    aria-label="Basic example">
                                                     <Link to={`${process.env.PUBLIC_URL}/fashion`}
-                                                            className="btn new-tab-btn">Preview
+                                                        className="btn new-tab-btn">Preview
                                                     </Link>
                                                 </div>
                                             </div>
@@ -132,9 +132,9 @@ class ThemeSettings extends Component {
                                             <div className="demo-text">
                                                 <h4>furniture</h4>
                                                 <div className="btn-group demo-btn" role="group"
-                                                     aria-label="Basic example">
+                                                    aria-label="Basic example">
                                                     <Link to={`${process.env.PUBLIC_URL}/furniture`}
-                                                          className="btn new-tab-btn">Preview
+                                                        className="btn new-tab-btn">Preview
                                                     </Link>
                                                 </div>
                                             </div>
@@ -149,9 +149,9 @@ class ThemeSettings extends Component {
                                             <div className="demo-text">
                                                 <h4>kids</h4>
                                                 <div className="btn-group demo-btn" role="group"
-                                                     aria-label="Basic example">
+                                                    aria-label="Basic example">
                                                     <Link to={`${process.env.PUBLIC_URL}/kids`}
-                                                          className="btn new-tab-btn">Preview
+                                                        className="btn new-tab-btn">Preview
                                                     </Link>
                                                 </div>
                                             </div>
@@ -166,9 +166,9 @@ class ThemeSettings extends Component {
                                             <div className="demo-text">
                                                 <h4>pets</h4>
                                                 <div className="btn-group demo-btn" role="group"
-                                                     aria-label="Basic example">
+                                                    aria-label="Basic example">
                                                     <Link to={`${process.env.PUBLIC_URL}/pets`}
-                                                          className="btn new-tab-btn">Preview
+                                                        className="btn new-tab-btn">Preview
                                                     </Link>
                                                 </div>
                                             </div>
@@ -183,9 +183,9 @@ class ThemeSettings extends Component {
                                             <div className="demo-text">
                                                 <h4>vegetables</h4>
                                                 <div className="btn-group demo-btn" role="group"
-                                                     aria-label="Basic example">
+                                                    aria-label="Basic example">
                                                     <Link to={`${process.env.PUBLIC_URL}/vegetables`}
-                                                          className="btn new-tab-btn">Preview
+                                                        className="btn new-tab-btn">Preview
                                                     </Link>
                                                 </div>
                                             </div>
@@ -200,9 +200,9 @@ class ThemeSettings extends Component {
                                             <div className="demo-text">
                                                 <h4>watch</h4>
                                                 <div className="btn-group demo-btn" role="group"
-                                                     aria-label="Basic example">
+                                                    aria-label="Basic example">
                                                     <Link to={`${process.env.PUBLIC_URL}/watch`}
-                                                          className="btn new-tab-btn">Preview
+                                                        className="btn new-tab-btn">Preview
                                                     </Link>
                                                 </div>
                                             </div>
@@ -217,9 +217,9 @@ class ThemeSettings extends Component {
                                             <div className="demo-text">
                                                 <h4>beauty</h4>
                                                 <div className="btn-group demo-btn" role="group"
-                                                     aria-label="Basic example">
+                                                    aria-label="Basic example">
                                                     <Link to={`${process.env.PUBLIC_URL}/beauty`}
-                                                          className="btn new-tab-btn">Preview
+                                                        className="btn new-tab-btn">Preview
                                                     </Link>
                                                 </div>
                                             </div>
@@ -234,9 +234,9 @@ class ThemeSettings extends Component {
                                             <div className="demo-text">
                                                 <h4>electronics</h4>
                                                 <div className="btn-group demo-btn" role="group"
-                                                     aria-label="Basic example">
+                                                    aria-label="Basic example">
                                                     <Link to={`${process.env.PUBLIC_URL}/electronic`}
-                                                          className="btn new-tab-btn">Preview
+                                                        className="btn new-tab-btn">Preview
                                                     </Link>
                                                 </div>
                                             </div>
@@ -255,9 +255,9 @@ class ThemeSettings extends Component {
                                             <div className="demo-text">
                                                 <h4>left sidebar</h4>
                                                 <div className="btn-group demo-btn" role="group"
-                                                     aria-label="Basic example">
+                                                    aria-label="Basic example">
                                                     <Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`}
-                                                          className="btn new-tab-btn">Preview
+                                                        className="btn new-tab-btn">Preview
                                                     </Link>
                                                 </div>
                                             </div>
@@ -269,9 +269,9 @@ class ThemeSettings extends Component {
                                             <div className="demo-text">
                                                 <h4>right sidebar</h4>
                                                 <div className="btn-group demo-btn" role="group"
-                                                     aria-label="Basic example">
+                                                    aria-label="Basic example">
                                                     <Link to={`${process.env.PUBLIC_URL}/right-sidebar/collection`}
-                                                          className="btn new-tab-btn">Preview
+                                                        className="btn new-tab-btn">Preview
                                                     </Link>
                                                 </div>
                                             </div>
@@ -283,9 +283,9 @@ class ThemeSettings extends Component {
                                             <div className="demo-text">
                                                 <h4>no sidebar</h4>
                                                 <div className="btn-group demo-btn" role="group"
-                                                     aria-label="Basic example">
+                                                    aria-label="Basic example">
                                                     <Link to={`${process.env.PUBLIC_URL}/no-sidebar/collection`}
-                                                          className="btn new-tab-btn">Preview
+                                                        className="btn new-tab-btn">Preview
                                                     </Link>
                                                 </div>
                                             </div>
@@ -297,9 +297,9 @@ class ThemeSettings extends Component {
                                             <div className="demo-text">
                                                 <h4>metro</h4>
                                                 <div className="btn-group demo-btn" role="group"
-                                                     aria-label="Basic example">
+                                                    aria-label="Basic example">
                                                     <Link to={`${process.env.PUBLIC_URL}/metro/collection`}
-                                                          className="btn new-tab-btn">Preview
+                                                        className="btn new-tab-btn">Preview
                                                     </Link>
                                                 </div>
                                             </div>
@@ -311,9 +311,9 @@ class ThemeSettings extends Component {
                                             <div className="demo-text">
                                                 <h4>full width</h4>
                                                 <div className="btn-group demo-btn" role="group"
-                                                     aria-label="Basic example">
+                                                    aria-label="Basic example">
                                                     <Link to={`${process.env.PUBLIC_URL}/full-width/collection`}
-                                                          className="btn new-tab-btn">Preview
+                                                        className="btn new-tab-btn">Preview
                                                     </Link>
                                                 </div>
                                             </div>
@@ -332,9 +332,9 @@ class ThemeSettings extends Component {
                                             <div className="demo-text">
                                                 <h4>left sidebar</h4>
                                                 <div className="btn-group demo-btn" role="group"
-                                                     aria-label="Basic example">
+                                                    aria-label="Basic example">
                                                     <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/1`}
-                                                          className="btn new-tab-btn">Preview
+                                                        className="btn new-tab-btn">Preview
                                                     </Link>
                                                 </div>
                                             </div>
@@ -346,9 +346,9 @@ class ThemeSettings extends Component {
                                             <div className="demo-text">
                                                 <h4>right sidebar</h4>
                                                 <div className="btn-group demo-btn" role="group"
-                                                     aria-label="Basic example">
+                                                    aria-label="Basic example">
                                                     <Link to={`${process.env.PUBLIC_URL}/right-sidebar/product/1`}
-                                                          className="btn new-tab-btn">Preview
+                                                        className="btn new-tab-btn">Preview
                                                     </Link>
                                                 </div>
                                             </div>
@@ -360,9 +360,9 @@ class ThemeSettings extends Component {
                                             <div className="demo-text">
                                                 <h4>no sidebar</h4>
                                                 <div className="btn-group demo-btn" role="group"
-                                                     aria-label="Basic example">
+                                                    aria-label="Basic example">
                                                     <Link to={`${process.env.PUBLIC_URL}/no-sidebar/product/1`}
-                                                          className="btn new-tab-btn">Preview
+                                                        className="btn new-tab-btn">Preview
                                                     </Link>
                                                 </div>
                                             </div>
@@ -374,9 +374,9 @@ class ThemeSettings extends Component {
                                             <div className="demo-text">
                                                 <h4>col left</h4>
                                                 <div className="btn-group demo-btn" role="group"
-                                                     aria-label="Basic example">
+                                                    aria-label="Basic example">
                                                     <Link to={`${process.env.PUBLIC_URL}/col-left/product/1`}
-                                                          className="btn new-tab-btn">Preview
+                                                        className="btn new-tab-btn">Preview
                                                     </Link>
                                                 </div>
                                             </div>
@@ -388,9 +388,9 @@ class ThemeSettings extends Component {
                                             <div className="demo-text">
                                                 <h4>col right</h4>
                                                 <div className="btn-group demo-btn" role="group"
-                                                     aria-label="Basic example">
+                                                    aria-label="Basic example">
                                                     <Link to={`${process.env.PUBLIC_URL}/col-right/product/1`}
-                                                          className="btn new-tab-btn">Preview
+                                                        className="btn new-tab-btn">Preview
                                                     </Link>
                                                 </div>
                                             </div>
@@ -402,9 +402,9 @@ class ThemeSettings extends Component {
                                             <div className="demo-text">
                                                 <h4>accordian</h4>
                                                 <div className="btn-group demo-btn" role="group"
-                                                     aria-label="Basic example">
+                                                    aria-label="Basic example">
                                                     <Link to={`${process.env.PUBLIC_URL}/accordian/product/1`}
-                                                          className="btn new-tab-btn">Preview
+                                                        className="btn new-tab-btn">Preview
                                                     </Link>
                                                 </div>
                                             </div>
@@ -416,9 +416,9 @@ class ThemeSettings extends Component {
                                             <div className="demo-text">
                                                 <h4>column</h4>
                                                 <div className="btn-group demo-btn" role="group"
-                                                     aria-label="Basic example">
+                                                    aria-label="Basic example">
                                                     <Link to={`${process.env.PUBLIC_URL}/column/product/1`}
-                                                          className="btn new-tab-btn">Preview
+                                                        className="btn new-tab-btn">Preview
                                                     </Link>
                                                 </div>
                                             </div>
@@ -430,9 +430,9 @@ class ThemeSettings extends Component {
                                             <div className="demo-text">
                                                 <h4>left image</h4>
                                                 <div className="btn-group demo-btn" role="group"
-                                                     aria-label="Basic example">
+                                                    aria-label="Basic example">
                                                     <Link to={`${process.env.PUBLIC_URL}/left-image/product/1`}
-                                                          className="btn new-tab-btn">Preview
+                                                        className="btn new-tab-btn">Preview
                                                     </Link>
                                                 </div>
                                             </div>
@@ -444,9 +444,9 @@ class ThemeSettings extends Component {
                                             <div className="demo-text">
                                                 <h4>right image</h4>
                                                 <div className="btn-group demo-btn" role="group"
-                                                     aria-label="Basic example">
+                                                    aria-label="Basic example">
                                                     <Link to={`${process.env.PUBLIC_URL}/right-image/product/1`}
-                                                          className="btn new-tab-btn">Preview
+                                                        className="btn new-tab-btn">Preview
                                                     </Link>
                                                 </div>
                                             </div>
@@ -458,9 +458,9 @@ class ThemeSettings extends Component {
                                             <div className="demo-text">
                                                 <h4>vertical</h4>
                                                 <div className="btn-group demo-btn" role="group"
-                                                     aria-label="Basic example">
+                                                    aria-label="Basic example">
                                                     <Link to={`${process.env.PUBLIC_URL}/vertical/product/1`}
-                                                          className="btn new-tab-btn">Preview
+                                                        className="btn new-tab-btn">Preview
                                                     </Link>
                                                 </div>
                                             </div>
@@ -499,7 +499,7 @@ class ThemeSettings extends Component {
                             <div className="setting-contant">
                                 <ul className="setting_buttons">
                                     <li className="active" id="ltr_btn">
-                                        <a href={null} className="btn setting_btn" onClick={ () => this.ChangeRtl(this.state.divName)}>
+                                        <a href={null} className="btn setting_btn" onClick={() => this.ChangeRtl(this.state.divName)}>
                                             {this.state.divName}
                                         </a>
                                     </li>
@@ -507,16 +507,16 @@ class ThemeSettings extends Component {
                             </div>
                             <div className="buy_btn">
                                 <a href="https://themeforest.net/item/multikart-responsive-react-ecommerce-template/23067773?s_rank=1"
-                                   target="_blank" className="btn btn-block purchase_btn">
+                                    target="_blank" className="btn btn-block purchase_btn">
                                     <i className="fa fa-shopping-cart" aria-hidden="true"></i> purchase Multikart now!</a>
                                 <a href="https://themeforest.net/item/multikart-responsive-angular-ecommerce-template/22905358?s_rank=3"
-                                   target="_blank" className="btn btn-block purchase_btn">
+                                    target="_blank" className="btn btn-block purchase_btn">
                                     <img src={`${process.env.PUBLIC_URL}/assets/images/icon/angular.png`} alt="" className="img-fluid" /> Multikart Angular</a>
                                 <a href="https://themeforest.net/item/multikart-responsive-ecommerce-html-template/22809967"
-                                   target="_blank" className="btn btn-block purchase_btn">
+                                    target="_blank" className="btn btn-block purchase_btn">
                                     <img src="" alt="" className="img-fluid" /> Multikart HTML</a>
                                 <a href="https://themeforest.net/item/multikart-multipurpose-shopify-sections-theme/23093831?s_rank=1"
-                                   target="_blank" className="btn btn-block purchase_btn">
+                                    target="_blank" className="btn btn-block purchase_btn">
                                     <img src={`${process.env.PUBLIC_URL}/assets/images/icon/shopify.png`} alt="" className="img-fluid" /> Multikart Shopify</a>
                             </div>
                         </div>
@@ -527,7 +527,7 @@ class ThemeSettings extends Component {
                         <div
                             className="theme-layout-version"
                             onClick={() => this.changeThemeLayout()}
-                        >{this.state.themeLayout?'Light':'Dark'}</div>
+                        >{this.state.themeLayout ? 'Light' : 'Dark'}</div>
                     </div>
                 </div>
                 <div className="tap-top" onClick={this.clickToTop} style={tap_to_top}>
@@ -536,7 +536,7 @@ class ThemeSettings extends Component {
                     </div>
                 </div>
 
-                <ToastContainer/>
+                <ToastContainer />
             </div>
         );
     }

@@ -8,11 +8,11 @@ class Login extends Component {
 
     constructor(props) {
         super(props)
-
-    }
-
-    state = {
-        data: {},
+        this.state = {
+            data: {},
+            userDetail: {},
+            isLoading: false,
+        }
     }
 
     handleChange = (e) => {
@@ -24,11 +24,15 @@ class Login extends Component {
     }
 
     handleSubmit = async () => {
+        this.setState({ isLoading: true })
         const res = await store.dispatch(loginUser(this.state.data));
         if (res) {
+            this.setState({ isLoading: false })
             this.props.history.push({
-                pathname: '/dashboard',
+                pathname: '/',
             })
+        } else {
+            this.setState({ isLoading: false })
         }
     }
 
@@ -38,14 +42,17 @@ class Login extends Component {
                 <Breadcrumb title={'Login'} />
                 {/*Login section*/}
                 <section className="login-page section-b-space">
+
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-6">
                                 <h3>Login</h3>
-                                <div className="theme-card">
-                                    {/* <form className="theme-form"> */}
-                                    <div className="theme-form"></div>
+                                {/* <form className="theme-form"> */}
+                                <div className="theme-form">
                                     <div className="form-group">
+                                        {this.state.isLoading && (
+                                            <div className="loading-cls"></div>
+                                        )}
                                         <label htmlFor="email">Email</label>
                                         <input
                                             type="text"
@@ -92,4 +99,4 @@ class Login extends Component {
     }
 }
 
-export default Login
+export default Login;
