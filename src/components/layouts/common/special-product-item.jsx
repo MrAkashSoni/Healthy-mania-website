@@ -42,7 +42,7 @@ class SpecialProductItem extends Component {
     }
 
     plusQty = () => {
-        if (this.props.product.quantity >= this.state.quantity) {
+        if (this.props.product.quantity > this.state.quantity) {
             this.setState({ quantity: this.state.quantity + 1 })
             this.props.onIncrementClicked()
         } else {
@@ -55,7 +55,7 @@ class SpecialProductItem extends Component {
     }
 
     updateQty = (e) => {
-        if (this.props.product.quantity >= parseInt(e.target.value)) {
+        if (this.props.product.quantity > parseInt(e.target.value)) {
             this.setState({ quantity: parseInt(e.target.value) })
             this.props.onAddToCartClicked()
         } else {
@@ -188,10 +188,16 @@ class SpecialProductItem extends Component {
                         >
                             <h6>{product.name}</h6>
                         </Link>
-                        <h4>
-                            {symbol}{product.price}
-                            <del><span className="money">{symbol}{product.price}</span></del>
-                        </h4>
+                        {product.discount > 0 ? (
+                            <h4>
+                                {symbol}{(product.price - ((product.price * product.discount) / 100))}
+                                <del><span className="money">{symbol}{product.price}</span></del>
+                            </h4>
+                        ) : (
+                            <h4>
+                                {symbol}{product.price}
+                            </h4>
+                        )}
                     </div>
                 </div>
 

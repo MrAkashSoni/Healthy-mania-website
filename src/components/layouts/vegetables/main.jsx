@@ -13,7 +13,17 @@ import {
     svgFreeShipping,
     svgservice,
     svgoffer
-} from "../../../services/script"
+} from "../../../services/script";
+
+import {
+    addToCart,
+    addToWishlist,
+    addToCompare,
+    incrementQty,
+    decrementQty,
+    removeFromCart
+} from "../../../actions";
+
 import HeaderTwo from "../../common/headers/header-two"
 import FooterOne from "../../common/footers/footer-one"
 import ThemeSettings from "../../common/theme-settings"
@@ -29,28 +39,34 @@ class Vegetables extends Component {
         const { products, symbol } = store.getState().data;
 
         console.log('produrrrrrr', store.getState().data)
-        const handleAddToCart = () => {
-            console.log('handleAddToCart');
+        const handleAddToCart = (product) => {
+            console.log('handleAddToCart', product);
+            store.dispatch(addToCart(product, 1))
         }
 
-        const handleAddToCompare = () => {
+        const handleAddToCompare = (product) => {
             console.log('handleAddToCompare');
+            store.dispatch(addToCompare(product));
         }
 
-        const handleAddToWishList = () => {
-            console.log('handleAddToWishList');
+        const handleAddToWishList = (product) => {
+            console.log('handleAddToWishList', product);
+            store.dispatch(addToWishlist(product))
         }
 
-        const handleDecrementQty = () => {
-            console.log('handleDecrementQty');
+        const handleDecrementQty = (product_id) => {
+            console.log('handleDecrementQty', product_id);
+            store.dispatch(decrementQty(product_id))
         }
 
-        const handleIncrementQty = () => {
-            console.log('handleIncrementQty');
+        const handleIncrementQty = (product) => {
+            console.log('handleIncrementQty', product);
+            store.dispatch(incrementQty(product, 1))
         }
 
-        const handleRemoveFromCart = () => {
-            console.log('handleRemoveFromCart');
+        const handleRemoveFromCart = (product) => {
+            console.log('handleRemoveFromCart', product);
+            store.dispatch(removeFromCart(product))
         }
 
         return (

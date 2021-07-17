@@ -1,30 +1,30 @@
-import React, {Component} from 'react';
-import {Helmet} from 'react-helmet'
+import React, { Component } from 'react';
+import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
-import {Link, Redirect } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import PaypalExpressBtn from 'react-paypal-express-checkout';
 import SimpleReactValidator from 'simple-react-validator';
 
 import Breadcrumb from "../common/breadcrumb";
-import {removeFromWishlist} from '../../actions'
-import {getCartTotal} from "../../services";
+import { removeFromWishlist } from '../../actions'
+import { getCartTotal } from "../../services";
 
 class checkOut extends Component {
 
-    constructor (props) {
-        super (props)
+    constructor(props) {
+        super(props)
 
         this.state = {
-            payment:'stripe',
-            first_name:'',
-            last_name:'',
-            phone:'',
-            email:'',
-            country:'',
-            address:'',
-            city:'',
-            state:'',
-            pincode:'',
+            payment: 'stripe',
+            first_name: '',
+            last_name: '',
+            phone: '',
+            email: '',
+            country: '',
+            address: '',
+            city: '',
+            state: '',
+            pincode: '',
             create_account: ''
         }
         this.validator = new SimpleReactValidator();
@@ -35,18 +35,17 @@ class checkOut extends Component {
         obj[event.target.name] = event.target.value;
         this.setState(obj);
 
-      }
+    }
 
-      setStateFromCheckbox = (event) => {
-          var obj = {};
-          obj[event.target.name] = event.target.checked;
-          this.setState(obj);
+    setStateFromCheckbox = (event) => {
+        var obj = {};
+        obj[event.target.name] = event.target.checked;
+        this.setState(obj);
 
-          if(!this.validator.fieldValid(event.target.name))
-          {
-              this.validator.showMessages();
-          }
+        if (!this.validator.fieldValid(event.target.name)) {
+            this.validator.showMessages();
         }
+    }
 
     checkhandle(value) {
         this.setState({
@@ -64,33 +63,33 @@ class checkOut extends Component {
                 locale: 'auto',
                 token: (token: any) => {
                     console.log(token)
-                      this.props.history.push({
-                          pathname: '/order-success',
-                              state: { payment: token, items: this.props.cartItems, orderTotal: this.props.total, symbol: this.props.symbol }
-                      })
+                    this.props.history.push({
+                        pathname: '/order-success',
+                        state: { payment: token, items: this.props.cartItems, orderTotal: this.props.total, symbol: this.props.symbol }
+                    })
                 }
-              });
-              handler.open({
+            });
+            handler.open({
                 name: 'Multikart',
                 description: 'Online Fashion Store',
                 amount: this.amount * 100
-              })
+            })
         } else {
-          this.validator.showMessages();
-          // rerender to show messages for the first time
-          this.forceUpdate();
+            this.validator.showMessages();
+            // rerender to show messages for the first time
+            this.forceUpdate();
         }
     }
 
-    render (){
-        const {cartItems, symbol, total} = this.props;
+    render() {
+        const { cartItems, symbol, total } = this.props;
 
         // Paypal Integration
         const onSuccess = (payment) => {
             console.log("The payment was succeeded!", payment);
             this.props.history.push({
                 pathname: '/order-success',
-                    state: { payment: payment, items: cartItems, orderTotal: total, symbol: symbol }
+                state: { payment: payment, items: cartItems, orderTotal: total, symbol: symbol }
             })
 
         }
@@ -104,7 +103,7 @@ class checkOut extends Component {
         }
 
         const client = {
-            sandbox:    'AZ4S98zFa01vym7NVeo_qthZyOnBhtNvQDsjhaZSMH-2_Y9IAJFbSD3HPueErYqN8Sa8WYRbjP7wWtd_',
+            sandbox: 'AZ4S98zFa01vym7NVeo_qthZyOnBhtNvQDsjhaZSMH-2_Y9IAJFbSD3HPueErYqN8Sa8WYRbjP7wWtd_',
             production: 'AZ4S98zFa01vym7NVeo_qthZyOnBhtNvQDsjhaZSMH-2_Y9IAJFbSD3HPueErYqN8Sa8WYRbjP7wWtd_',
         }
 
@@ -119,7 +118,7 @@ class checkOut extends Component {
                 </Helmet>
                 {/*SEO Support End */}
 
-                <Breadcrumb  title={'Checkout'}/>
+                <Breadcrumb title={'Checkout'} />
 
                 <section className="section-b-space">
                     <div className="container padding-cls">
@@ -144,7 +143,7 @@ class checkOut extends Component {
                                                 </div>
                                                 <div className="form-group col-md-6 col-sm-6 col-xs-12">
                                                     <div className="field-label">Phone</div>
-                                                    <input type="text" name="phone"  value={this.state.phone} onChange={this.setStateFromInput} />
+                                                    <input type="text" name="phone" value={this.state.phone} onChange={this.setStateFromInput} />
                                                     {this.validator.message('phone', this.state.phone, 'required|phone')}
                                                 </div>
                                                 <div className="form-group col-md-6 col-sm-6 col-xs-12">
@@ -183,7 +182,7 @@ class checkOut extends Component {
                                                     {this.validator.message('pincode', this.state.pincode, 'required|integer')}
                                                 </div>
                                                 <div className="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                    <input type="checkbox" name="create_account" id="account-option"  checked={this.state.create_account} onChange={this.setStateFromCheckbox}/>
+                                                    <input type="checkbox" name="create_account" id="account-option" checked={this.state.create_account} onChange={this.setStateFromCheckbox} />
                                                     &ensp; <label htmlFor="account-option">Create An Account?</label>
                                                     {this.validator.message('checkbox', this.state.create_account, 'create_account')}
                                                 </div>
@@ -197,19 +196,19 @@ class checkOut extends Component {
                                                     </div>
                                                     <ul className="qty">
                                                         {cartItems.map((item, index) => {
-                                                            return <li key={index}>{item.name} × {item.qty} <span>{symbol} {item.sum}</span></li> })
-                                                        }
+                                                            return <li key={index}>{item.name} × {item.qty} <span>{symbol} {parseFloat(parseFloat(item.qty) * (parseFloat(item.price, 10) - (parseFloat(((item.price * item.discount) / 100), 10))), 10)}</span></li>
+                                                        })}
                                                     </ul>
                                                     <ul className="sub-total">
                                                         <li>Subtotal <span className="count">{symbol}{total}</span></li>
                                                         <li>Shipping <div className="shipping">
                                                             <div className="shopping-option">
                                                                 <input type="checkbox" name="free-shipping" id="free-shipping" />
-                                                                    <label htmlFor="free-shipping">Free Shipping</label>
+                                                                <label htmlFor="free-shipping">Free Shipping</label>
                                                             </div>
                                                             <div className="shopping-option">
                                                                 <input type="checkbox" name="local-pickup" id="local-pickup" />
-                                                                    <label htmlFor="local-pickup">Local Pickup</label>
+                                                                <label htmlFor="local-pickup">Local Pickup</label>
                                                             </div>
                                                         </div>
                                                         </li>
@@ -233,18 +232,18 @@ class checkOut extends Component {
                                                                 <li>
                                                                     <div className="radio-option paypal">
                                                                         <input type="radio" name="payment-group" id="payment-1" onClick={() => this.checkhandle('paypal')} />
-                                                                            <label htmlFor="payment-1">PayPal<span className="image"><img src={`${process.env.PUBLIC_URL}/assets/images/paypal.png`} alt=""/></span></label>
+                                                                        <label htmlFor="payment-1">PayPal<span className="image"><img src={`${process.env.PUBLIC_URL}/assets/images/paypal.png`} alt="" /></span></label>
                                                                     </div>
                                                                 </li>
                                                             </ul>
                                                         </div>
                                                     </div>
-                                                    {(total !== 0)?
-                                                    <div className="text-right">
-                                                        {(this.state.payment === 'stripe')? <button type="button" className="btn-solid btn" onClick={() => this.StripeClick()} >Place Order</button>:
-                                                         <PaypalExpressBtn env={'sandbox'} client={client} currency={'USD'} total={total} onError={onError} onSuccess={onSuccess} onCancel={onCancel} />}
-                                                    </div>
-                                                    : ''}
+                                                    {(total !== 0) ?
+                                                        <div className="text-right">
+                                                            {(this.state.payment === 'stripe') ? <button type="button" className="btn-solid btn" onClick={() => this.StripeClick()} >Place Order</button> :
+                                                                <PaypalExpressBtn env={'sandbox'} client={client} currency={'USD'} total={total} onError={onError} onSuccess={onSuccess} onCancel={onCancel} />}
+                                                        </div>
+                                                        : ''}
                                                 </div>
                                             </div>
                                         </div>
@@ -316,5 +315,5 @@ const mapStateToProps = (state) => ({
 
 export default connect(
     mapStateToProps,
-    {removeFromWishlist}
+    { removeFromWishlist }
 )(checkOut)

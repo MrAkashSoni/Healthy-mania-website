@@ -29,13 +29,14 @@ export const removeFromCart = product_id => (dispatch) => {
     })
 };
 export const incrementQty = (product, qty) => (dispatch) => {
-    toast.success("Item Added to Cart");
+    console.log('incremetQty actions', product, qty)
+    // toast.success("Item Added to Cart");
     dispatch(addToCartUnsafe(product, qty))
 
 }
 export const decrementQty = productId => (dispatch) => {
-    toast.warn("Item Decrement Qty to Cart");
-
+    // toast.warn("Item Decrement Qty to Cart");
+    console.log('deccremtne qty', productId)
     dispatch({
         type: types.DECREMENT_QTY,
         productId

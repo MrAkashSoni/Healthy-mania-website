@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, NavLink} from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { IntlActions } from 'react-redux-multilingual'
 import Pace from 'react-pace-progress'
 
@@ -9,64 +9,64 @@ import NavBar from "./common/navbar";
 import SideBar from "./common/sidebar";
 import CartContainer from "./../../../containers/CartContainer";
 import TopBarWhite from "./common/topbar-white";
-import {changeCurrency} from '../../../actions'
-import {connect} from "react-redux";
+import { changeCurrency } from '../../../actions'
+import { connect } from "react-redux";
 import LogoImage from "./common/logo";
 
 class HeaderFour extends Component {
 
-    constructor(props) {
-        super(props);
+	constructor(props) {
+		super(props);
 
 		this.state = {
-			isLoading:false
+			isLoading: false
 		}
-    }
-
-    /*=====================
-         Pre loader
-         ==========================*/
-    componentDidMount() {
-        setTimeout(function() {
-            document.querySelector(".loader-wrapper").style = "display: none";
-        }, 2000);
-    }
-
-    changeLanguage(lang) {
-        store.dispatch(IntlActions.setLocale(lang))
 	}
 
-    openNav() {
-        var openmyslide = document.getElementById("mySidenav");
-        if(openmyslide){
-            openmyslide.classList.add('open-side')
+	/*=====================
+		 Pre loader
+		 ==========================*/
+	componentDidMount() {
+		setTimeout(function () {
+			document.querySelector(".loader-wrapper").style = "display: none";
+		}, 2000);
+	}
+
+	changeLanguage(lang) {
+		store.dispatch(IntlActions.setLocale(lang))
+	}
+
+	openNav() {
+		var openmyslide = document.getElementById("mySidenav");
+		if (openmyslide) {
+			openmyslide.classList.add('open-side')
 		}
-    }
-    openSearch() {
-        document.getElementById("search-overlay").style.display = "block";
-    }
+	}
+	openSearch() {
+		document.getElementById("search-overlay").style.display = "block";
+	}
 
-    closeSearch() {
-        document.getElementById("search-overlay").style.display = "none";
-    }
+	closeSearch() {
+		document.getElementById("search-overlay").style.display = "none";
+	}
 
-	load = ()=>{
-		this.setState({isLoading: true});
-		fetch().then(()=>{
+	load = () => {
+		this.setState({ isLoading: true });
+		fetch().then(() => {
 			// deal with data fetched
-			this.setState({isLoading: false})
+			this.setState({ isLoading: false })
 		})
 	};
-	
+
 	render() {
 
 		return (
 			<div>
 				<header >
-					{this.state.isLoading ? <Pace color="#27ae60"/> : null}
+					{this.state.isLoading ? <Pace color="#27ae60" /> : null}
 					<div className="mobile-fix-option"></div>
 					{/*Top Header Component*/}
-					<TopBarWhite/>
+					<TopBarWhite />
 
 					<div className="container-fluid">
 						<div className="row">
@@ -78,15 +78,15 @@ class HeaderFour extends Component {
 												<div className="bar-style"> <i className="fa fa-bars sidebar-bar" aria-hidden="true"></i></div>
 											</a>
 											{/*SideBar Navigation Component*/}
-											<SideBar/>
+											<SideBar />
 										</div>
 										<div className="brand-logo">
-                                            <LogoImage logo={this.props.logoName} />
+											<LogoImage logo={this.props.logoName} />
 										</div>
 									</div>
 									<div className="menu-right pull-right">
 										{/*Top Navigation Bar Component*/}
-										<NavBar/>
+										<NavBar />
 
 										<div>
 											<div className="icon-nav">
@@ -106,15 +106,15 @@ class HeaderFour extends Component {
 															</ul>
 															<h6>currency</h6>
 															<ul className="list-inline">
-																<li><a href={null} onClick={() => this.props.changeCurrency('€')}>euro</a> </li>
+																{/* <li><a href={null} onClick={() => this.props.changeCurrency('€')}>euro</a> </li> */}
 																<li><a href={null} onClick={() => this.props.changeCurrency('₹')}>rupees</a> </li>
-																<li><a href={null} onClick={() => this.props.changeCurrency('£')}>pound</a> </li>
-																<li><a href={null} onClick={() => this.props.changeCurrency('$')}>doller</a> </li>
+																{/* <li><a href={null} onClick={() => this.props.changeCurrency('£')}>pound</a> </li>
+																<li><a href={null} onClick={() => this.props.changeCurrency('$')}>doller</a> </li> */}
 															</ul>
 														</div>
 													</li>
 													{/*Header Cart Component */}
-													<CartContainer/>
+													<CartContainer />
 												</ul>
 											</div>
 										</div>
@@ -125,30 +125,30 @@ class HeaderFour extends Component {
 					</div>
 				</header>
 
-                <div id="search-overlay" className="search-overlay">
-                    <div>
-                        <span className="closebtn" onClick={this.closeSearch} title="Close Overlay">×</span>
-                        <div className="overlay-content">
-                            <div className="container">
-                                <div className="row">
-                                    <div className="col-xl-12">
-                                        <form>
-                                            <div className="form-group">
-                                                <input type="text" className="form-control" id="exampleInputPassword1" placeholder="Search a Product" />
-                                            </div>
-                                            <button type="submit" className="btn btn-primary"><i className="fa fa-search"></i></button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+				<div id="search-overlay" className="search-overlay">
+					<div>
+						<span className="closebtn" onClick={this.closeSearch} title="Close Overlay">×</span>
+						<div className="overlay-content">
+							<div className="container">
+								<div className="row">
+									<div className="col-xl-12">
+										<form>
+											<div className="form-group">
+												<input type="text" className="form-control" id="exampleInputPassword1" placeholder="Search a Product" />
+											</div>
+											<button type="submit" className="btn btn-primary"><i className="fa fa-search"></i></button>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
-			)
+		)
 	}
 }
 
 export default connect(null,
-    { changeCurrency }
+	{ changeCurrency }
 )(HeaderFour);
