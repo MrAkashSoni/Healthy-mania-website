@@ -1,12 +1,12 @@
-import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Modal from 'react-responsive-modal';
 
 
 class ProductStyleEight extends Component {
 
     render() {
-        const {product, symbol, onAddToCartClicked, onAddToWishlistClicked, onAddToCompareClicked} = this.props;
+        const { product, symbol, onAddToCartClicked, onAddToWishlistClicked, } = this.props;
 
         return (
 
@@ -14,9 +14,9 @@ class ProductStyleEight extends Component {
                 <div className="img-wrapper">
                     <div className="front">
                         <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${product.id}`} ><img
-                            src={product.variants?
+                            src={product.variants ?
                                 product.variants[0].images
-                                :product.pictures[0]}
+                                : product.pictures[0]}
                             className="img-fluid"
                             alt="" /></Link>
                     </div>
@@ -28,19 +28,17 @@ class ProductStyleEight extends Component {
                             <i className="fa fa-heart" aria-hidden="true"></i>
                         </a>
                         <a href="javascript:void(0)" data-toggle="modal"
-                           data-target="#quick-view"
-                           title="Quick View">
+                            data-target="#quick-view"
+                            title="Quick View">
                             <i className="fa fa-search" aria-hidden="true"></i>
                         </a>
-                        <Link to={`${process.env.PUBLIC_URL}/compare`} title="Compare" onClick={onAddToCompareClicked}>
-                            <i className="fa fa-refresh" aria-hidden="true"></i></Link>
                     </div>
                 </div>
                 <div className="product-detail">
                     <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${product.id}`}>
                         <h6>{product.name}</h6>
                     </Link>
-                    <h4>{symbol}{product.price-(product.price*product.discount/100)}</h4>
+                    <h4>{symbol}{product.price - (product.price * product.discount / 100)}</h4>
                 </div>
             </div>
         )

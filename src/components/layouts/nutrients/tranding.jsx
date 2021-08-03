@@ -1,18 +1,8 @@
 import React, { Component } from 'react';
 import Slider from 'react-slick';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux'
 
-import { getTopCollection, getTrendingCollection } from '../../../services'
 import { Product4 } from '../../../services/script'
-import {
-    addToCart,
-    addToWishlist,
-    addToCompare,
-    incrementQty,
-    decrementQty,
-    removeFromCart
-} from "../../../actions";
+
 import ProductItem from '../common/special-product-item';
 
 class Tranding extends Component {
@@ -24,7 +14,6 @@ class Tranding extends Component {
             symbol,
             addToCart,
             addToWishlist,
-            addToCompare,
             incrementQty,
             decrementQty,
             removeFromCart
@@ -50,7 +39,6 @@ class Tranding extends Component {
                                             <ProductItem
                                                 product={product}
                                                 symbol={symbol}
-                                                onAddToCompareClicked={() => addToCompare(product)}
                                                 onAddToWishlistClicked={() => addToWishlist(product)}
                                                 onAddToCartClicked={() => addToCart(product, 1)}
                                                 onIncrementClicked={() => incrementQty(product, 1)}

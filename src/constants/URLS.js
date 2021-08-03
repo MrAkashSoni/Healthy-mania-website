@@ -6,4 +6,7 @@ export const USER_SIGNUP = 'api/accounts/register/';
 export const USER_LOGIN = 'api/accounts/login/';
 
 // products
-export const GET_ALL_PRODUCTS = 'api/products/'
+export const GET_ALL_PRODUCTS = 'api/products/';
+
+// category
+export const GET_ALL_CATEGORY = 'api/category';

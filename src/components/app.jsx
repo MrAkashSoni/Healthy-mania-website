@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { withTranslate } from 'react-redux-multilingual'
 
 // Custom Components
@@ -13,16 +13,14 @@ import FooterThree from "./common/footers/footer-three";
 // ThemeSettings
 import ThemeSettings from "./common/theme-settings"
 
-
-
 class App extends Component {
 
     render() {
         return (
             <div>
-                <HeaderOne logoName={'logo.png'}/>
+                <HeaderOne logoName={'logo.png'} />
                 {this.props.children}
-                <FooterOne logoName={'logo.png'}/>
+                <FooterOne logoName={'logo.png'} />
 
                 <ThemeSettings />
 

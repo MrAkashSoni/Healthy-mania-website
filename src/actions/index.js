@@ -63,23 +63,6 @@ export const removeFromWishlist = product_id => (dispatch) => {
     })
 };
 
-
-//Compare Products
-export const addToCompare = (product) => (dispatch) => {
-    toast.success("Item Added to Compare");
-    dispatch(addToCompareUnsafe(product))
-
-}
-export const addToCompareUnsafe = (product) => ({
-    type: types.ADD_TO_COMPARE,
-    product
-});
-export const removeFromCompare = product_id => ({
-    type: types.REMOVE_FROM_COMPARE,
-    product_id
-});
-
-
 // Filters
 export const filterBrand = (brand) => ({
     type: types.FILTER_BRAND,

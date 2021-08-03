@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import store from '../../store';
 import Breadcrumb from "../common/breadcrumb";
 import { createUser } from '../../actions/authActions';
+import { toast } from 'react-toastify';
 
 class Register extends Component {
 
@@ -14,7 +15,6 @@ class Register extends Component {
         }
     }
 
-
     handleChange = (e) => {
         const obj = { ...this.state.data }
         obj[e.target.name] = e.target.value;
@@ -25,14 +25,19 @@ class Register extends Component {
 
     handleSubmit = async () => {
         this.setState({ isLoading: true })
-        const res = await store.dispatch(createUser(this.state.data));
-        if (res) {
-            this.setState({ isLoading: false })
-            this.props.history.push({
-                pathname: '/pages/login',
-            })
+        if (this.state.data.password === this.state.data.confirm_password) {
+            const res = await store.dispatch(createUser(this.state.data));
+            if (res) {
+                this.setState({ isLoading: false })
+                this.props.history.push({
+                    pathname: '/pages/login',
+                })
+            } else {
+                this.setState({ isLoading: false })
+            }
         } else {
-            this.setState({ isLoading: false })
+            this.setState({ isLoading: false });
+            toast.error("Password and confirm password must be same.");
         }
     }
 

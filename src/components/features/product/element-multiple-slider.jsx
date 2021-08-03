@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Slider from "react-slick"
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 
 // import Custom Components
 import Breadcrumb from "../../common/breadcrumb";
@@ -10,19 +10,19 @@ import {
     getNewProducts,
     getVisibleproducts
 } from "../../../services";
-import {addToCart, addToCompare, addToWishlist} from "../../../actions";
+import { addToCart, addToWishlist } from "../../../actions";
 import ProductStyleTwo from "./common/product-style-two";
 
 
 class ElementMultipleSlider extends Component {
 
 
-    render (){
-        const {newProducts, featureProducts, bestSeller, onSell, newWatches, bestSellerWatches, symbol} = this.props;
+    render() {
+        const { newProducts, featureProducts, bestSeller, onSell, newWatches, bestSellerWatches, symbol } = this.props;
 
         return (
             <div>
-                <Breadcrumb parent={'Elements'} title={'product Slider'}/>
+                <Breadcrumb parent={'Elements'} title={'product Slider'} />
 
                 <section className="">
                     <div className="container">
@@ -70,12 +70,11 @@ class ElementMultipleSlider extends Component {
                                         <h4>on sale</h4>
                                         <h2 className="title-inner2">season sale</h2>
                                         <Slider className="offer-slider slide-1">
-                                            { newWatches.slice(2, 5).map((product, index) =>
+                                            {newWatches.slice(2, 5).map((product, index) =>
                                                 <div key={index}>
                                                     <ProductStyleTwo product={product} symbol={symbol}
-                                                         onAddToCompareClicked={() => addToCompare(product)}
-                                                         onAddToWishlistClicked={() => addToWishlist(product)}
-                                                         onAddToCartClicked={addToCart} key={index}/>
+                                                        onAddToWishlistClicked={() => addToWishlist(product)}
+                                                        onAddToCartClicked={addToCart} key={index} />
                                                 </div>)}
                                         </Slider>
                                     </div>
@@ -101,11 +100,11 @@ const mapStateToProps = (state) => ({
     featureProducts: getVisibleproducts(state.data, state.filters),
     bestSeller: getVisibleproducts(state.data, state.filters),
     onSell: getVisibleproducts(state.data, state.filters),
-    newWatches:getNewProducts(state.data.products, 'watch'),
-    bestSellerWatches:getBestSellerProducts(state.data.products, 'watch'),
+    newWatches: getNewProducts(state.data.products, 'watch'),
+    bestSellerWatches: getBestSellerProducts(state.data.products, 'watch'),
     symbol: state.data.symbol,
 })
 
 export default connect(
-    mapStateToProps, {addToCart, addToWishlist, addToCompare}
+    mapStateToProps, { addToCart, addToWishlist }
 )(ElementMultipleSlider)

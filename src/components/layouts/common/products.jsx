@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 
-import {getBestSeller, getMensWear, getWomensWear} from '../../../services/index'
-import {addToCart, addToWishlist, addToCompare} from "../../../actions/index";
+import { getBestSeller, getMensWear, getWomensWear } from '../../../services/index'
+import { addToCart, addToWishlist } from "../../../actions/index";
 import ProductItem from './product-item';
 
 class SpecialProducts extends Component {
-    render (){
+    render() {
 
-        const {bestSeller,mensWear,womensWear, symbol, addToCart, addToWishlist, addToCompare} = this.props
+        const { bestSeller, mensWear, womensWear, symbol, addToCart, addToWishlist } = this.props
         return (
             <div>
                 <div className="title1 section-t-space">
@@ -27,31 +27,28 @@ class SpecialProducts extends Component {
 
                             <TabPanel>
                                 <div className="no-slider row">
-                                    { bestSeller.map((product, index ) =>
+                                    {bestSeller.map((product, index) =>
                                         <ProductItem product={product} symbol={symbol}
-                                                     onAddToCompareClicked={() => addToCompare(product)}
-                                                     onAddToWishlistClicked={() => addToWishlist(product)}
-                                                     onAddToCartClicked={() => addToCart(product, 1)} key={index} /> )
+                                            onAddToWishlistClicked={() => addToWishlist(product)}
+                                            onAddToCartClicked={() => addToCart(product, 1)} key={index} />)
                                     }
                                 </div>
                             </TabPanel>
                             <TabPanel>
                                 <div className="no-slider row">
-                                    { mensWear.map((product, index ) =>
+                                    {mensWear.map((product, index) =>
                                         <ProductItem product={product} symbol={symbol}
-                                                     onAddToCompareClicked={() => addToCompare(product)}
-                                                     onAddToWishlistClicked={() => addToWishlist(product)}
-                                                     onAddToCartClicked={() => addToCart(product, 1)} key={index} /> )
+                                            onAddToWishlistClicked={() => addToWishlist(product)}
+                                            onAddToCartClicked={() => addToCart(product, 1)} key={index} />)
                                     }
                                 </div>
                             </TabPanel>
                             <TabPanel>
                                 <div className=" no-slider row">
-                                    { womensWear.map((product, index ) =>
+                                    {womensWear.map((product, index) =>
                                         <ProductItem product={product} symbol={symbol}
-                                                     onAddToCompareClicked={() => addToCompare(product)}
-                                                     onAddToWishlistClicked={() => addToWishlist(product)}
-                                                     onAddToCartClicked={() => addToCart(product, 1)} key={index} /> )
+                                            onAddToWishlistClicked={() => addToWishlist(product)}
+                                            onAddToCartClicked={() => addToCart(product, 1)} key={index} />)
                                     }
                                 </div>
                             </TabPanel>
@@ -70,4 +67,4 @@ const mapStateToProps = (state) => ({
     symbol: state.data.symbol
 })
 
-export default connect(mapStateToProps, {addToCart, addToWishlist, addToCompare}) (SpecialProducts);
+export default connect(mapStateToProps, { addToCart, addToWishlist })(SpecialProducts);

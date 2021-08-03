@@ -6,9 +6,7 @@ import { Link } from 'react-router-dom';
 
 // Import custom components
 import store from '../../../store';
-import { Slider3 } from "../../../services/script"
-import Trading from "./tranding"
-import Special from "../common/special"
+import Tranding from "./tranding"
 import {
     svgFreeShipping,
     svgservice,
@@ -18,7 +16,6 @@ import {
 import {
     addToCart,
     addToWishlist,
-    addToCompare,
     incrementQty,
     decrementQty,
     removeFromCart
@@ -42,11 +39,6 @@ class Vegetables extends Component {
         const handleAddToCart = (product) => {
             console.log('handleAddToCart', product);
             store.dispatch(addToCart(product, 1))
-        }
-
-        const handleAddToCompare = (product) => {
-            console.log('handleAddToCompare');
-            store.dispatch(addToCompare(product));
         }
 
         const handleAddToWishList = (product) => {
@@ -85,7 +77,7 @@ class Vegetables extends Component {
                                             <div className="slider-contain">
                                                 <div>
                                                     <h4>save 10%</h4>
-                                                    <h1>fresh vegetables.</h1><a href="#" className="btn btn-solid">shop
+                                                    <h1>fresh vegetables.</h1><a href="/shop" className="btn btn-solid">shop
                                                         now</a></div>
                                             </div>
                                         </div>
@@ -101,7 +93,7 @@ class Vegetables extends Component {
                                             <div className="slider-contain">
                                                 <div>
                                                     <h4>save upto 10%</h4>
-                                                    <h1>fresh vegetables</h1><a href="#" className="btn btn-solid">shop
+                                                    <h1>fresh vegetables</h1><a href="/shop" className="btn btn-solid">shop
                                                         now</a></div>
                                             </div>
                                         </div>
@@ -151,13 +143,11 @@ class Vegetables extends Component {
                 {/*collection banner layout end*/}
 
                 {/*product section Start*/}
-                {console.log('Symbol-=-=-', symbol)}
-                <Trading
+                <Tranding
                     products={products}
                     symbol={symbol}
                     addToCart={handleAddToCart}
                     addToWishlist={handleAddToWishList}
-                    addToCompare={handleAddToCompare}
                     incrementQty={handleIncrementQty}
                     decrementQty={handleDecrementQty}
                     removeFromCart={handleRemoveFromCart}
@@ -189,7 +179,6 @@ class Vegetables extends Component {
                     symbol={Symbol}
                     addToCart={handleAddToCart}
                     addToWishlist={handleAddToWishList}
-                    addToCompare={handleAddToCompare}
                     incrementQty={handleIncrementQty}
                     decrementQty={handleDecrementQty}
                     removeFromCart={handleRemoveFromCart}

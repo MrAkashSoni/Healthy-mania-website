@@ -9,44 +9,23 @@ import './index.scss';
 // Import custom components
 import store from './store';
 import translations from './constants/translations'
-import { getAllProducts } from './actions/productActions'
+import { getAllCategory, getAllProducts } from './actions/productActions'
 import Landing from './components/landing'
 
 
 // Layouts
-import Fashion from './components/layouts/fashion/main';
-import Vegetables from './components/layouts/vegetables/main';
-import Kids from './components/layouts/kids/main';
-import Pets from './components/layouts/pets/main';
-import Furniture from './components/layouts/furniture/main';
-import Watch from './components/layouts/watch/main';
-import Beauty from './components/layouts/beauty/main';
-import Electronic from './components/layouts/electronic/main';
+import Nutrients from './components/layouts/nutrients/main';
 
 
 //Collection Pages
-import CollectionLeftSidebar from "./components/collection/collection-left-sidebar";
-import CollectionNoSidebar from "./components/collection/collection-no-sidebar";
-import CollectionRightSidebar from "./components/collection/collection-right-sidebar";
-import CollectionFullWidth from "./components/collection/collection-full-width";
-import CollectionMetro from "./components/collection/collection-metro";
+import Shop from "./components/collection/shop";
 
 // Product Pages
-import LeftSideBar from "./components/products/left-sidebar";
-import RightSideBar from "./components/products/right-sidebar";
-import NoSideBar from "./components/products/no-sidebar";
-import LeftImage from "./components/products/left-image";
-import RightImage from "./components/products/right-image";
-import Accordian from "./components/products/accordian";
-import ColumnLeft from "./components/products/column-left";
-import ColumnRight from "./components/products/column-right";
-import Column from "./components/products/column";
-import Vertical from "./components/products/vertical";
+import Product from "./components/products/product";
 
 // Features
 import Layout from './components/app'
 import Cart from './components/cart'
-import Compare from './components/compare/index'
 import wishList from './components/wishlist'
 import checkOut from './components/checkout'
 import orderSuccess from './components/checkout/success-page'
@@ -93,6 +72,7 @@ class Root extends React.Component {
 
     render() {
         store.dispatch(getAllProducts());
+        store.dispatch(getAllCategory());
 
         return (
             <Provider store={store}>
@@ -100,44 +80,18 @@ class Root extends React.Component {
                     <BrowserRouter basename={'/'} >
                         <ScrollContext>
                             <Switch>
-                                {/* <Route exact path={`${process.env.PUBLIC_URL}/`} component={Landing}/> */}
-                                <Route exact path={`${process.env.PUBLIC_URL}/`} component={Vegetables} />
-                                {/* <Route path={`${process.env.PUBLIC_URL}/vegetables`} component={Vegetables}/> */}
-                                <Route path={`${process.env.PUBLIC_URL}/electronic`} component={Electronic} />
-                                <Route path={`${process.env.PUBLIC_URL}/furniture`} component={Furniture} />
-                                <Route path={`${process.env.PUBLIC_URL}/pets`} component={Pets} />
-                                <Route path={`${process.env.PUBLIC_URL}/watch`} component={Watch} />
-                                <Route path={`${process.env.PUBLIC_URL}/kids`} component={Kids} />
-                                <Route path={`${process.env.PUBLIC_URL}/beauty`} component={Beauty} />
+                                <Route exact path={`${process.env.PUBLIC_URL}/`} component={Nutrients} />
                                 <Layout>
 
-                                    {/*Routes For Layouts*/}
-                                    <Route path={`${process.env.PUBLIC_URL}/fashion`} component={Fashion} />
-
                                     {/*Routes For Features (Product Collection) */}
-                                    <Route path={`${process.env.PUBLIC_URL}/left-sidebar/collection`} component={CollectionLeftSidebar} />
-                                    <Route path={`${process.env.PUBLIC_URL}/no-sidebar/collection`} component={CollectionNoSidebar} />
-                                    <Route path={`${process.env.PUBLIC_URL}/right-sidebar/collection`} component={CollectionRightSidebar} />
-                                    <Route path={`${process.env.PUBLIC_URL}/full-width/collection`} component={CollectionFullWidth} />
-                                    <Route path={`${process.env.PUBLIC_URL}/metro/collection`} component={CollectionMetro} />
+                                    <Route path={`${process.env.PUBLIC_URL}/shop`} component={Shop} />
 
                                     {/*Routes For Single Product*/}
-                                    <Route path={`${process.env.PUBLIC_URL}/left-sidebar/product/:id`} component={LeftSideBar} />
-                                    <Route path={`${process.env.PUBLIC_URL}/right-sidebar/product/:id`} component={RightSideBar} />
-                                    <Route path={`${process.env.PUBLIC_URL}/no-sidebar/product/:id`} component={NoSideBar} />
-                                    <Route path={`${process.env.PUBLIC_URL}/col-left/product/:id`} component={ColumnLeft} />
-                                    <Route path={`${process.env.PUBLIC_URL}/col-right/product/:id`} component={ColumnRight} />
-                                    <Route path={`${process.env.PUBLIC_URL}/accordian/product/:id`} component={Accordian} />
-                                    <Route path={`${process.env.PUBLIC_URL}/column/product/:id`} component={Column} />
-                                    <Route path={`${process.env.PUBLIC_URL}/left-image/product/:id`} component={LeftImage} />
-                                    <Route path={`${process.env.PUBLIC_URL}/right-image/product/:id`} component={RightImage} />
-                                    <Route path={`${process.env.PUBLIC_URL}/vertical/product/:id`} component={Vertical} />
-
+                                    <Route path={`${process.env.PUBLIC_URL}/product/:id`} component={Product} />
 
                                     {/*Routes For custom Features*/}
                                     <Route path={`${process.env.PUBLIC_URL}/cart`} component={Cart} />
                                     <Route path={`${process.env.PUBLIC_URL}/wishlist`} component={wishList} />
-                                    <Route path={`${process.env.PUBLIC_URL}/compare`} component={Compare} />
                                     <Route path={`${process.env.PUBLIC_URL}/checkout`} component={checkOut} />
                                     <Route path={`${process.env.PUBLIC_URL}/order-success`} component={orderSuccess} />
 

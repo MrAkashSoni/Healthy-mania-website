@@ -1,16 +1,16 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Slider from 'react-slick';
-import {connect} from 'react-redux';
-import {Link} from 'react-router-dom'
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom'
 
-import {getBestSeller} from "../../services";
-import {addToCart, addToWishlist, addToCompare} from "../../actions";
+import { getBestSeller } from "../../services";
+import { addToCart, addToWishlist } from "../../actions";
 import ProductItem from '../layouts/common/product-item';
 
 
 class RelatedProduct extends Component {
-    render (){
-        const {items, symbol, addToCart, addToWishlist, addToCompare} = this.props;
+    render() {
+        const { items, symbol, addToCart, addToWishlist } = this.props;
 
 
         return (
@@ -22,12 +22,11 @@ class RelatedProduct extends Component {
                         </div>
                     </div>
                     <div className="row search-product">
-                        { items.slice(0, 6).map((product, index ) =>
+                        {items.slice(0, 6).map((product, index) =>
                             <div key={index} className="col-xl-2 col-md-4 col-sm-6">
                                 <ProductItem product={product} symbol={symbol}
-                                             onAddToCompareClicked={() => addToCompare(product)}
-                                             onAddToWishlistClicked={() => addToWishlist(product)}
-                                             onAddToCartClicked={() => addToCart(product, 1)} key={index} />
+                                    onAddToWishlistClicked={() => addToWishlist(product)}
+                                    onAddToCartClicked={() => addToCart(product, 1)} key={index} />
                             </div>)
                         }
                     </div>
@@ -44,4 +43,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, {addToCart, addToWishlist, addToCompare})(RelatedProduct);
+export default connect(mapStateToProps, { addToCart, addToWishlist })(RelatedProduct);

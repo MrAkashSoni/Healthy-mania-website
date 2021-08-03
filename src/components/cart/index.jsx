@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-
+import store from '../../store';
 import Breadcrumb from "../common/breadcrumb";
 import { getCartTotal } from "../../services";
 import { removeFromCart, incrementQty, decrementQty } from '../../actions'
@@ -17,6 +17,37 @@ class cartComponent extends Component {
     render() {
 
         const { cartItems, symbol, total } = this.props;
+        const { products } = store.getState().data;
+
+        console.log(' this.props', this.props);
+        console.log('produccc', products);
+        const handleDecrementQty = (product_id) => {
+
+            const prod = products.find(p => p.id === product_id);
+
+            // if (this.state.quantity > 1) {
+            //     this.setState({ stock: 'InStock' })
+            //     this.setState({ quantity: this.state.quantity - 1 })
+            //     this.props.onDecrementClicked()
+            // } else {
+            //     console.log('removefromcart')
+            //     this.setState({ openQuantity: false })
+            //     this.props.onRemoveFromCart()
+            // }
+            console.log('handleDecrementQty', product_id);
+            store.dispatch(decrementQty(product_id))
+        }
+
+        const handleIncrementQty = (product) => {
+            console.log('handleIncrementQty', product);
+            store.dispatch(incrementQty(product, 1))
+        }
+
+        const handleRemoveFromCart = (product) => {
+            console.log('handleRemoveFromCart', product);
+            store.dispatch(removeFromCart(product))
+        }
+
         return (
             <div>
                 {/*SEO Support*/}
@@ -73,7 +104,7 @@ class cartComponent extends Component {
                                                                 </div>
                                                                 <div className="col-xs-3">
                                                                     <h2 className="td-color">
-                                                                        <a href="#" className="icon" onClick={() => this.props.removeFromCart(item)}>
+                                                                        <a href="#" className="icon" onClick={() => handleRemoveFromCart(item)}>
                                                                             <i className="icon-close"></i>
                                                                         </a>
                                                                     </h2>
@@ -85,14 +116,14 @@ class cartComponent extends Component {
                                                             <div className="qty-box">
                                                                 <div className="input-group">
                                                                     <span className="input-group-prepend">
-                                                                        <button type="button" className="btn quantity-left-minus" onClick={() => this.props.decrementQty(item.id)} data-type="minus" data-field="">
+                                                                        <button type="button" className="btn quantity-left-minus" onClick={() => handleDecrementQty(item.id)} data-type="minus" data-field="">
                                                                             <i className="fa fa-angle-left"></i>
                                                                         </button>
                                                                     </span>
                                                                     <input type="text" name="quantity" value={item.qty} readOnly={true} className="form-control input-number" />
 
                                                                     <span className="input-group-prepend">
-                                                                        <button className="btn quantity-right-plus" onClick={() => this.props.incrementQty(item, 1)} data-type="plus" disabled={(item.qty >= item.stock) ? true : false}>
+                                                                        <button className="btn quantity-right-plus" onClick={() => handleIncrementQty(item, 1)} data-type="plus" disabled={(item.qty >= item.stock) ? true : false}>
                                                                             <i className="fa fa-angle-right"></i>
                                                                         </button>
                                                                     </span>
@@ -100,7 +131,7 @@ class cartComponent extends Component {
                                                             </div>{(item.qty >= item.stock) ? 'out of Stock' : ''}
                                                         </td>
                                                         <td>
-                                                            <a href="#" className="icon" onClick={() => this.props.removeFromCart(item)}>
+                                                            <a href="#" className="icon" onClick={() => handleRemoveFromCart(item)}>
                                                                 <i className="fa fa-times"></i>
                                                             </a>
                                                         </td>
@@ -160,5 +191,5 @@ const mapStateToProps = (state) => ({
 
 export default connect(
     mapStateToProps,
-    { removeFromCart, incrementQty, decrementQty }
+    // { removeFromCart, incrementQty, decrementQty }
 )(cartComponent)

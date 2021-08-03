@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
 import Slider from 'react-slick';
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 
-import {getTrendingCollection} from '../../../services/index'
-import {Product4, Product5} from '../../../services/script'
-import {addToCart, addToWishlist, addToCompare} from "../../../actions/index";
+import { getTrendingCollection } from '../../../services/index'
+import { Product4, Product5 } from '../../../services/script'
+import { addToCart, addToWishlist } from "../../../actions/index";
 import ProductItem from '../../features/product/common/product-style-five';
 
 class TopCollection extends Component {
 
-    render (){
+    render() {
 
-        const {items, symbol, addToCart, addToWishlist, addToCompare, type} = this.props;
+        const { items, symbol, addToCart, addToWishlist, type } = this.props;
 
         var properties;
-        if(type === 'kids'){
+        if (type === 'kids') {
             properties = Product5
-        }else{
+        } else {
             properties = Product4
         }
 
@@ -33,12 +33,11 @@ class TopCollection extends Component {
                         <div className="row">
                             <div className="col">
                                 <Slider {...properties} className="product-4 product-m no-arrow">
-                                    { items.map((product, index ) =>
+                                    {items.map((product, index) =>
                                         <div key={index}>
-                                        <ProductItem product={product} symbol={symbol}
-                                                     onAddToCompareClicked={() => addToCompare(product)}
-                                                     onAddToWishlistClicked={() => addToWishlist(product)}
-                                                     onAddToCartClicked={() => addToCart(product, 1)} key={index} />
+                                            <ProductItem product={product} symbol={symbol}
+                                                onAddToWishlistClicked={() => addToWishlist(product)}
+                                                onAddToCartClicked={() => addToCart(product, 1)} key={index} />
                                         </div>)
                                     }
                                 </Slider>
@@ -56,4 +55,4 @@ const mapStateToProps = (state, ownProps) => ({
     symbol: state.data.symbol
 })
 
-export default connect(mapStateToProps, {addToCart, addToWishlist, addToCompare}) (TopCollection);
+export default connect(mapStateToProps, { addToCart, addToWishlist })(TopCollection);

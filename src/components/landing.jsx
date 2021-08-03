@@ -514,7 +514,7 @@ class Landing extends Component {
                                             </Link>
                                         </div>
                                         <div className="col-xl-3 col-sm-6 col-12 demo-box">
-                                            <Link to={`${process.env.PUBLIC_URL}/full-width/collection`} target="_blank">
+                                            <Link to={`${process.env.PUBLIC_URL}/shop`} target="_blank">
                                                 <img src={`${process.env.PUBLIC_URL}/assets/images/landing-page/special features/shop/10.jpg`}
                                                     className="img-fluid lazyload" />
                                                 <h3>full width <span className="badge badge-danger">New</span></h3>

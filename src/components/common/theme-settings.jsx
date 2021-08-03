@@ -312,7 +312,7 @@ class ThemeSettings extends Component {
                                                 <h4>full width</h4>
                                                 <div className="btn-group demo-btn" role="group"
                                                     aria-label="Basic example">
-                                                    <Link to={`${process.env.PUBLIC_URL}/full-width/collection`}
+                                                    <Link to={`${process.env.PUBLIC_URL}/shop`}
                                                         className="btn new-tab-btn">Preview
                                                     </Link>
                                                 </div>

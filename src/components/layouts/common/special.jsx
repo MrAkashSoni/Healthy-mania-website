@@ -7,7 +7,6 @@ import { getSingleItem, getSpecialCollection } from '../../../services/index'
 import {
     addToCart,
     addToWishlist,
-    addToCompare,
     incrementQty,
     decrementQty,
     removeFromCart
@@ -18,7 +17,7 @@ class Special extends Component {
 
     render() {
 
-        const { product, symbol, addToCart, addToWishlist, addToCompare, incrementQty, decrementQty, removeFromCart } = this.props;
+        const { product, symbol, addToCart, addToWishlist, incrementQty, decrementQty, removeFromCart } = this.props;
 
         console.log('product', product)
         return (
@@ -91,7 +90,6 @@ class Special extends Component {
                                             {/* <div>
                                                 <ProductItem
                                                     product={product[0]} symbol={symbol}
-                                                    onAddToCompareClicked={() => addToCompare(product[0])}
                                                     onAddToWishlistClicked={() => addToWishlist(product[0])}
                                                     onAddToCartClicked={() => addToCart(product[0], 1)}
                                                     onIncrementClicked={() => incrementQty(product[0], 1)}

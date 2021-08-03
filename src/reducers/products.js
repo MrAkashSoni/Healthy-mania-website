@@ -1,14 +1,16 @@
 import {
     FETCH_SINGLE_PRODUCT,
     CHANGE_CURRENCY,
-    RECEIVE_PRODUCTS
+    RECEIVE_PRODUCTS,
+    RECEIVE_CATEGORY
 } from "../constants/ActionTypes";
 
 
 const initialState = {
     products: [],
     symbol: '₹',
-    product_details: []
+    product_details: [],
+    categories: [],
 };
 
 const productReducer = (state = initialState, action) => {
@@ -35,6 +37,13 @@ const productReducer = (state = initialState, action) => {
                 ...state,
                 symbol: action.symbol
             };
+
+        case RECEIVE_CATEGORY:
+            return {
+                ...state,
+                categories: action.categories
+            };
+
         default:
             return state;
     }

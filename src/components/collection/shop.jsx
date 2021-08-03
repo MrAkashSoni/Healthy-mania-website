@@ -1,28 +1,35 @@
-import React, {Component} from 'react';
+import React, { Component, useState } from 'react';
 import { connect } from 'react-redux'
-import {Link} from 'react-router-dom';
+import {
+    Link,
+    useParams
+} from 'react-router-dom';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
-
+import store from '../../store';
 import { getTotal, getCartProducts } from '../../reducers/index'
-import { addToCart, addToWishlist, addToCompare } from '../../actions/index'
-import {getVisibleproducts} from '../../services/index';
+import { addToCart, addToWishlist } from '../../actions/index'
+import { getVisibleproducts } from '../../services/index';
 import ProductListItem from "./common/product-list-item";
 import Breadcrumb from "../common/breadcrumb";
 
-class CollectionFullWidth extends Component {
+class Shop extends Component {
 
-    constructor (props) {
-        super (props)
+    constructor(props) {
+        super(props)
 
         this.state = {
             limit: 5,
             hasMoreItems: true,
+            id: undefined,
         };
     }
 
-    componentWillMount(){
+    componentWillMount() {
         this.fetchMoreItems();
+
+        const { id } = this.props.match.params;
+        this.setState({ id })
     }
 
     fetchMoreItems = () => {
@@ -40,12 +47,26 @@ class CollectionFullWidth extends Component {
 
     }
 
-    render (){
-        const {products, addToCart, symbol, addToWishlist, addToCompare} = this.props;
+    render() {
+        let { products, symbol } = store.getState().data;
+        const { addToCart, addToWishlist } = this.props;
+
+        const filterProduct = () => {
+            const id = this.props.location.search.split('=')[1];
+            if (id) {
+                products = products.filter(product => {
+                    if (product.category == id) {
+                        return product;
+                    }
+                })
+            }
+        }
+
+        filterProduct();
 
         return (
             <div>
-                <Breadcrumb title={'Collection'}/>
+                <Breadcrumb title={'Collection'} />
 
                 <div className="container-fluid">
                     <div className="row">
@@ -64,12 +85,11 @@ class CollectionFullWidth extends Component {
                                         }
                                     >
                                         <div className="isotopeContainer row">
-                                            { products.slice(0, this.state.limit).map((product, index) =>
+                                            {products.slice(0, this.state.limit).map((product, index) =>
                                                 <div className="col-xl-2 col-lg-3 col-md-4 col-sm-6 isotopeSelector" key={index}>
                                                     <ProductListItem product={product} symbol={symbol}
-                                                                 onAddToCompareClicked={() => addToCompare(product)}
-                                                                 onAddToWishlistClicked={() => addToWishlist(product)}
-                                                                 onAddToCartClicked={addToCart} key={index}/>
+                                                        onAddToWishlistClicked={() => addToWishlist(product)}
+                                                        onAddToCartClicked={addToCart} key={index} />
                                                 </div>)
                                             }
                                         </div>
@@ -98,5 +118,5 @@ const mapStateToProps = (state) => ({
 })
 
 export default connect(
-    mapStateToProps, {addToCart, addToWishlist, addToCompare}
-)(CollectionFullWidth)
+    mapStateToProps, { addToCart, addToWishlist }
+)(Shop)

@@ -74,7 +74,6 @@ class SpecialProductItem extends Component {
             symbol,
             onAddToCartClicked,
             onAddToWishlistClicked,
-            onAddToCompareClicked
         } = this.props;
 
         const customStyle = {
@@ -125,14 +124,6 @@ class SpecialProductItem extends Component {
                         >
                             <i className="fa fa-search" aria-hidden="true"></i>
                         </a>
-
-                        <Link
-                            to={`${process.env.PUBLIC_URL}/compare`}
-                            title="Compare"
-                            onClick={onAddToCompareClicked}
-                        >
-                            <i className="fa fa-refresh" aria-hidden="true"></i>
-                        </Link>
                     </div>
                     <div className="addtocart_btn">
                         <button

@@ -6,6 +6,7 @@ import * as types from '../constants/ActionTypes';
 import {
     BASE_URL,
     GET_ALL_PRODUCTS,
+    GET_ALL_CATEGORY
 } from '../constants/URLS';
 
 export const fetchProductsBegin = () => ({
@@ -17,11 +18,20 @@ export const receiveProducts = (products) => ({
     products
 })
 
+export const fetchSingleProduct = productId => ({
+    type: types.FETCH_SINGLE_PRODUCT,
+    productId
+})
+
+export const categories = (categories) => ({
+    type: types.RECEIVE_CATEGORY,
+    categories
+})
+
 export const getAllProducts = () => async (dispatch) => {
     try {
         dispatch(fetchProductsBegin());
         const response = await axios.get(`${BASE_URL}/${GET_ALL_PRODUCTS}`);
-        console.log('response', response);
         if (response.status === 200) {
             dispatch(receiveProducts(response.data));
             return true;
@@ -30,12 +40,23 @@ export const getAllProducts = () => async (dispatch) => {
             return false;
         }
     } catch (error) {
-        toast.error(error.response.data.message);
+        if (error && error.response && error.response.data && error.response.data.message)
+            toast.error(error.response.data.message);
         return false;
     }
 }
 
-export const fetchSingleProduct = productId => ({
-    type: types.FETCH_SINGLE_PRODUCT,
-    productId
-})
+export const getAllCategory = () => async (dispatch) => {
+    try {
+        const response = await axios.get(`${BASE_URL}/${GET_ALL_CATEGORY}`);
+        console.log('getallcategoty response', response);
+        if (response.status === 200) {
+            dispatch(categories(response.data));
+            return true;
+        }
+    } catch (error) {
+        if (error && error.response && error.response.data && error.response.data.message)
+            toast.error(error.response.data.message);
+        return false;
+    }
+}

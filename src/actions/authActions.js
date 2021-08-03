@@ -33,7 +33,8 @@ export const createUser = (data) => async (dispatch) => {
         }
     }
     catch (error) {
-        toast.error(error.response.data.message);
+        if (error && error.response && error.response.data && error.response.data.message)
+            toast.error(error.response.data.message);
         dispatch(isLoading(false));
         return false;
     }
@@ -49,6 +50,7 @@ export const loginUser = (data) => async (dispatch) => {
                 type: types.USER_DETAIL,
                 payload: response.data
             })
+            localStorage.setItem('user', JSON.stringify(response.data))
             dispatch(isLoading(false));
             return true;
         }
@@ -59,7 +61,8 @@ export const loginUser = (data) => async (dispatch) => {
         }
     }
     catch (error) {
-        toast.error(error.response.data.message);
+        if (error && error.response && error.response.data && error.response.data.message)
+            toast.error(error.response.data.message);
         dispatch(isLoading(false));
         return false;
     }

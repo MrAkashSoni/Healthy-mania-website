@@ -79,7 +79,7 @@ class HeaderTwo extends Component {
     };
 
     render() {
-
+        console.log('header two this.props', this.props)
         return (
             <div>
                 <header id="sticky" className="sticky">
