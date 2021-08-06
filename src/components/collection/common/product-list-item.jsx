@@ -56,12 +56,19 @@ class ProductListItem extends Component {
             RatingStars.push(<i className="fa fa-star" key={i}></i>)
         }
 
+        console.log('prosuct===>', product)
+
         return (
 
             <div className="product-box">
                 <div className="img-wrapper">
                     <div className="front">
-                        <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${product.id}`} ><img
+                        {/* {product.images_list[0].images && product.images_list[0].images.length > 0 && product.images_list[0].images.map((vari, index) =>
+                            <div key={index}>
+                                <img src={`${vari}`} key={index} alt="" className="img-fluid" />
+                            </div>
+                        )} */}
+                        <Link to={`${process.env.PUBLIC_URL}/product?id=1${product.id}`} ><img
                             src={product.picture}
                             className="img-fluid"
                             alt="" /></Link>
@@ -96,7 +103,7 @@ class ProductListItem extends Component {
                         <div className="rating">
                             {RatingStars}
                         </div>
-                        <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${product.id}`}>
+                        <Link to={`${process.env.PUBLIC_URL}/product?id=1${product.id}`}>
                             <h6>{product.name}</h6>
                         </Link>
                         <h4>{symbol}{product.price - (product.price * product.discount / 100)}
@@ -164,7 +171,7 @@ class ProductListItem extends Component {
                                             </div>
                                             <div className="product-buttons">
                                                 <button className="btn btn-solid" onClick={() => onAddToCartClicked(product, this.state.quantity)} >add to cart</button>
-                                                <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${product.id}`} className="btn btn-solid">view detail</Link>
+                                                <Link to={`${process.env.PUBLIC_URL}/product?id=1${product.id}`} className="btn btn-solid">view detail</Link>
                                             </div>
                                         </div>
                                     </div>

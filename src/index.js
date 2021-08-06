@@ -87,6 +87,7 @@ class Root extends React.Component {
                                     <Route path={`${process.env.PUBLIC_URL}/shop`} component={Shop} />
 
                                     {/*Routes For Single Product*/}
+                                    <Route path={`${process.env.PUBLIC_URL}/product`} component={Product} />
                                     <Route path={`${process.env.PUBLIC_URL}/product/:id`} component={Product} />
 
                                     {/*Routes For custom Features*/}

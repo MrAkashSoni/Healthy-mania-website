@@ -6,7 +6,8 @@ import * as types from '../constants/ActionTypes';
 import {
     BASE_URL,
     GET_ALL_PRODUCTS,
-    GET_ALL_CATEGORY
+    GET_ALL_CATEGORY,
+    GET_PRODUCT,
 } from '../constants/URLS';
 
 export const fetchProductsBegin = () => ({
@@ -40,6 +41,25 @@ export const getAllProducts = () => async (dispatch) => {
             return false;
         }
     } catch (error) {
+        if (error && error.response && error.response.data && error.response.data.message)
+            toast.error(error.response.data.message);
+        return false;
+    }
+}
+
+export const getProduct = (id) => async (dispatch) => {
+    try {
+        console.log('getProduct id', id)
+        const response = await axios.get(`${BASE_URL}/${GET_PRODUCT}/${id}`);
+        console.log('getProduct id', response)
+        if (response.status === 200) {
+            return response.data;
+        } else {
+            toast.error('Something went wrong');
+            return false;
+        }
+    } catch (error) {
+        console.log('getProduct id', error)
         if (error && error.response && error.response.data && error.response.data.message)
             toast.error(error.response.data.message);
         return false;

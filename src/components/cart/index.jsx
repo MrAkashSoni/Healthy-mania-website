@@ -53,7 +53,7 @@ class cartComponent extends Component {
                 {/*SEO Support*/}
                 <Helmet>
                     <title>MultiKart | Cart List Page</title>
-                    <meta name="description" content="Multikart – Multipurpose eCommerce React Template is a multi-use React template. It is designed to go well with multi-purpose websites. Multikart Bootstrap 4 Template will help you run multiple businesses." />
+                    <meta name="description" content="Healthy Mania – Multipurpose eCommerce React Template is a multi-use React template. It is designed to go well with multi-purpose websites. Healthy Mania Bootstrap 4 Template will help you run multiple businesses." />
                 </Helmet>
                 {/*SEO Support End */}
 
@@ -80,16 +80,16 @@ class cartComponent extends Component {
                                                 <tbody key={index}>
                                                     <tr>
                                                         <td>
-                                                            {/* <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${item.id}`}>
+                                                            {/* <Link to={`${process.env.PUBLIC_URL}/product/${item.id}`}>
                                                         <img src={item.variants?
                                                                   item.variants[0].images
                                                                   :item.pictures[0]} alt="" />
                                                     </Link> */}
-                                                            <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${item.id}`}>
+                                                            <Link to={`${process.env.PUBLIC_URL}/product?id=1${item.id}`}>
                                                                 <img src={item.picture} alt="" />
                                                             </Link>
                                                         </td>
-                                                        <td><Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${item.id}`}>{item.name}</Link>
+                                                        <td><Link to={`${process.env.PUBLIC_URL}/product?id=1${item.id}`}>{item.name}</Link>
                                                             <div className="mobile-cart-content row">
                                                                 <div className="col-xs-3">
                                                                     <div className="qty-box">

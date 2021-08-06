@@ -38,7 +38,7 @@ class Special extends Component {
                                             <div className="sec-1">
                                                 <div className="product-box2">
                                                     <div className="media">
-                                                        <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${product[0].id}`} >
+                                                        <Link to={`${process.env.PUBLIC_URL}/product?id=${product[0].id}`} >
                                                             <img
                                                                 className="img-fluid blur-up lazyload"
                                                                 src={product[0].picture} alt="" />
@@ -49,7 +49,7 @@ class Special extends Component {
                                                                     className="fa fa-star"></i> <i
                                                                         className="fa fa-star"></i> <i
                                                                             className="fa fa-star"></i></div>
-                                                            <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${product[0].id}`} >
+                                                            <Link to={`${process.env.PUBLIC_URL}/product?id=${product[0].id}`} >
                                                                 <h6>{product[0].name}</h6>
                                                             </Link>
                                                             <h4>{symbol}{product[0].price - (product[0].price * product[0].discount / 100)}
@@ -60,7 +60,7 @@ class Special extends Component {
                                                 </div>
                                                 <div className="product-box2">
                                                     <div className="media">
-                                                        <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${product[0].id}`} >
+                                                        <Link to={`${process.env.PUBLIC_URL}/product?id=${product[0].id}`} >
                                                             <img
                                                                 className="img-fluid blur-up lazyload"
                                                                 src={product[0].picture} alt="" />
@@ -71,7 +71,7 @@ class Special extends Component {
                                                                     className="fa fa-star"></i> <i
                                                                         className="fa fa-star"></i> <i
                                                                             className="fa fa-star"></i></div>
-                                                            <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${product[0].id}`} >
+                                                            <Link to={`${process.env.PUBLIC_URL}/product?id=${product[0].id}`} >
                                                                 <h6>{product[0].name}</h6>
                                                             </Link>
                                                             <h4>{symbol}{product[0].price - (product[0].price * product[0].discount / 100)}
@@ -105,7 +105,7 @@ class Special extends Component {
                                             <div className="sec-1">
                                                 <div className="product-box2">
                                                     <div className="media">
-                                                        <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${product[0].id}`} >
+                                                        <Link to={`${process.env.PUBLIC_URL}/product?id=${product[0].id}`} >
                                                             <img
                                                                 className="img-fluid blur-up lazyload"
                                                                 src={product[0].picture} alt="" />
@@ -116,7 +116,7 @@ class Special extends Component {
                                                                     className="fa fa-star"></i> <i
                                                                         className="fa fa-star"></i> <i
                                                                             className="fa fa-star"></i></div>
-                                                            <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${product[0].id}`} >
+                                                            <Link to={`${process.env.PUBLIC_URL}/product?id=${product[0].id}`} >
                                                                 <h6>{product[0].name}</h6>
                                                             </Link>
                                                             <h4>{symbol}{product[0].price - (product[0].price * product[0].discount / 100)}
@@ -127,7 +127,7 @@ class Special extends Component {
                                                 </div>
                                                 <div className="product-box2">
                                                     <div className="media">
-                                                        <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${product[0].id}`} >
+                                                        <Link to={`${process.env.PUBLIC_URL}/product?id=${product[0].id}`} >
                                                             <img
                                                                 className="img-fluid blur-up lazyload"
                                                                 src={product[0].picture} alt="" />
@@ -138,7 +138,7 @@ class Special extends Component {
                                                                     className="fa fa-star"></i> <i
                                                                         className="fa fa-star"></i> <i
                                                                             className="fa fa-star"></i></div>
-                                                            <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${product[0].id}`} >
+                                                            <Link to={`${process.env.PUBLIC_URL}/product?id=${product[0].id}`} >
                                                                 <h6>{product[0].name}</h6>
                                                             </Link>
                                                             <h4>{symbol}{product[0].price - (product[0].price * product[0].discount / 100)}

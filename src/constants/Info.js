@@ -1,3 +1,5 @@
 export const COUNTRY_CODE = process.env.REACT_APP_COUNTRY_CODE;
 
 export const MERCHANT_PHONE_NUMBER = process.env.REACT_APP_MERCHANT_MOBILE_NUMBER;
+
+export const MERCHANT_EMAIL_ID = process.env.REACT_APP_MERCHANT_EMAIL_ID;

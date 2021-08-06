@@ -97,7 +97,7 @@ class SpecialProductItem extends Component {
                     </div>
                     <div className="front">
                         <Link
-                            to={`${process.env.PUBLIC_URL}/left-sidebar/product/${product.id}`}
+                            to={`${process.env.PUBLIC_URL}/product?id=${product.id}`}
                         >
                             <img
                                 src={product.picture}
@@ -175,7 +175,7 @@ class SpecialProductItem extends Component {
                             {RatingStars}
                         </div>
                         <Link
-                            to={`${process.env.PUBLIC_URL}/left-sidebar/product/${product.id}`}
+                            to={`${process.env.PUBLIC_URL}/product?id=${product.id}`}
                         >
                             <h6>{product.name}</h6>
                         </Link>
@@ -276,7 +276,7 @@ class SpecialProductItem extends Component {
                                                     add to cart
                                                 </button>
                                                 <Link
-                                                    to={`${process.env.PUBLIC_URL}/left-sidebar/product/${product.id}`}
+                                                    to={`${process.env.PUBLIC_URL}/product?id=${product.id}`}
                                                     className="btn btn-solid"
                                                 >
                                                     view detail

@@ -7,6 +7,7 @@ export const USER_LOGIN = 'api/accounts/login/';
 
 // products
 export const GET_ALL_PRODUCTS = 'api/products/';
+export const GET_PRODUCT = 'api/products';
 
 // category
 export const GET_ALL_CATEGORY = 'api/category';

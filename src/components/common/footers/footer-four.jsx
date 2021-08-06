@@ -1,18 +1,19 @@
-import React, {Component} from 'react';
-import { Link} from 'react-router-dom';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
-import {SlideUpDown} from "../../../services/script"
+import { SlideUpDown } from "../../../services/script"
 import LogoImage from "../headers/common/logo"
+import { COUNTRY_CODE, MERCHANT_PHONE_NUMBER, MERCHANT_EMAIL_ID } from '../../../constants/Info';
 
 class FooterFour extends Component {
 
-    componentDidMount(){
+    componentDidMount() {
         var contentwidth = window.innerWidth;
         if ((contentwidth) < 750) {
             SlideUpDown('footer-title');
         } else {
             var elems = document.querySelectorAll(".footer-title");
-            [].forEach.call(elems, function(elemt) {
+            [].forEach.call(elems, function (elemt) {
                 let el = elemt.nextElementSibling;
                 el.style = "display: block";
             });
@@ -20,7 +21,7 @@ class FooterFour extends Component {
     }
 
 
-    render () {
+    render() {
 
         return (
             <footer className="">
@@ -34,7 +35,7 @@ class FooterFour extends Component {
                                         <form className="form-inline subscribe-form classic-form">
                                             <div className="form-group">
                                                 <input type="text" className="form-control" id="exampleFormControlInput"
-                                                       placeholder="Enter your email" />
+                                                    placeholder="Enter your email" />
                                             </div>
                                             <button type="submit" className="btn btn-solid">subscribe</button>
                                         </form>
@@ -55,58 +56,21 @@ class FooterFour extends Component {
                                     <div className="footer-logo">
                                         <LogoImage logo={this.props.logoName} />
                                     </div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, </p>
                                     <div className="footer-social">
                                         <ul>
                                             <li>
-                                                <Link to={'https://www.facebook.com/'} ><i className="fa fa-facebook" aria-hidden="true"></i></Link>
+                                                <a href={`mailto:${MERCHANT_EMAIL_ID}`}><i className="fa fa-google" aria-hidden="true"></i></a>
                                             </li>
                                             <li>
-                                                <Link to={'https://plus.google.com/'} ><i className="fa fa-google-plus" aria-hidden="true"></i></Link>
+                                                <a href={'https://www.instagram.com/healthy_mania_?r=nametag'} target="_blank"><i className="fa fa-instagram" aria-hidden="true"></i></a>
                                             </li>
-                                            <li>
-                                                <Link to={'https://twitter.com'}><i className="fa fa-twitter" aria-hidden="true"></i></Link>
-                                            </li>
-                                            <li>
-                                                <Link to={'https://instagram.com'}><i className="fa fa-instagram" aria-hidden="true"></i></Link>
-                                            </li>
-                                            <li>
-                                                <Link to={'https://rss.com/'}><i className="fa fa-rss" aria-hidden="true"></i></Link>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col offset-xl-1">
-                                <div className="sub-title">
-                                    <div className="footer-title">
-                                        <h4>my account</h4>
-                                    </div>
-                                    <div className="footer-contant">
-                                        <ul>
-                                            <li><Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`} >womens</Link></li>
-                                            <li><Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`} >clothing</Link></li>
-                                            <li><Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`} >accessories</Link></li>
-                                            <li><Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`} >featured</Link></li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                             <div className="col">
                                 <div className="sub-title">
-                                    <div className="footer-title">
-                                        <h4>why we choose</h4>
-                                    </div>
-                                    <div className="footer-contant">
-                                        <ul>
-                                            <li><a href="#">shipping & return</a></li>
-                                            <li><a href="#">secure shopping</a></li>
-                                            <li><a href="#">gallary</a></li>
-                                            <li><a href="#">affiliates</a></li>
-                                            <li><a href="#">contacts</a></li>
-                                        </ul>
-                                    </div>
+
                                 </div>
                             </div>
                             <div className="col">
@@ -116,13 +80,9 @@ class FooterFour extends Component {
                                     </div>
                                     <div className="footer-contant">
                                         <ul className="contact-list">
-                                            <li><i className="fa fa-map-marker"></i>Multikart Demo Store, Demo store
-                                                India 345-659
-                                            </li>
-                                            <li><i className="fa fa-phone"></i>Call Us: 123-456-7898</li>
+                                            <li><i className="fa fa-phone"></i>Call Us: +{COUNTRY_CODE} - {MERCHANT_PHONE_NUMBER}</li>
                                             <li><i className="fa fa-envelope-o"></i>Email Us: <a
-                                                href="#">Support@Fiot.com</a></li>
-                                            <li><i className="fa fa-fax"></i>Fax: 123456</li>
+                                                href={`mailto:${MERCHANT_EMAIL_ID}`}>{MERCHANT_EMAIL_ID}</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -135,29 +95,7 @@ class FooterFour extends Component {
                         <div className="row">
                             <div className="col-xl-6 col-md-6 col-sm-12">
                                 <div className="footer-end">
-                                    <p><i className="fa fa-copyright" aria-hidden="true"></i> 2018-19 themeforest
-                                        powered by pixelstrap</p>
-                                </div>
-                            </div>
-                            <div className="col-xl-6 col-md-6 col-sm-12">
-                                <div className="payment-card-bottom">
-                                    <ul>
-                                        <li>
-                                            <a href="#"><img src={`${process.env.PUBLIC_URL}/assets/images/icon/visa.png`} alt="" /></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><img src={`${process.env.PUBLIC_URL}/assets/images/icon/mastercard.png`} alt="" /></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><img src={`${process.env.PUBLIC_URL}/assets/images/icon/paypal.png`} alt="" /></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><img src={`${process.env.PUBLIC_URL}/assets/images/icon/american-express.png`} alt="" /></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><img src={`${process.env.PUBLIC_URL}/assets/images/icon/discover.png`} alt="" /></a>
-                                        </li>
-                                    </ul>
+                                    <p><i className="fa fa-copyright" aria-hidden="true"></i> 2021 Helthy Mania</p>
                                 </div>
                             </div>
                         </div>

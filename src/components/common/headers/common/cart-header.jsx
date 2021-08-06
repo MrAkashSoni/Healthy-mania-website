@@ -5,9 +5,9 @@ const CartHeader = ({ item, total, symbol, removeFromCart }) => (
     <li>
         {console.log('item', item)}
         <div className="media">
-            <Link to={`${process.env.PUBLIC_URL}/product/${item.id}`}><img alt="" className="mr-3" src={`${item.picture}`} /></Link>
+            <Link to={`${process.env.PUBLIC_URL}/product?id=${item.id}`}><img alt="" className="mr-3" src={`${item.picture}`} /></Link>
             <div className="media-body">
-                <Link to={`${process.env.PUBLIC_URL}/product/${item.id}`}><h4>{item.name}</h4></Link>
+                <Link to={`${process.env.PUBLIC_URL}/product?id=${item.id}`}><h4>{item.name}</h4></Link>
                 <h4><span>{item.qty} x {symbol} {(item.price - ((item.price * item.discount) / 100))}</span></h4>
             </div>
         </div>

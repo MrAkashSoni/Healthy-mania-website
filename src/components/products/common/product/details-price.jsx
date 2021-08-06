@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import Slider from 'react-slick';
 import Modal from 'react-responsive-modal';
 
+import { MERCHANT_EMAIL_ID } from '../../../../constants/Info';
 
 class DetailsWithPrice extends Component {
 
@@ -140,10 +141,12 @@ class DetailsWithPrice extends Component {
                         <h6 className="product-title">share it</h6>
                         <div className="product-icon">
                             <ul className="product-social">
-                                <li><a href="https://www.facebook.com/" target="_blank"><i className="fa fa-facebook"></i></a></li>
-                                <li><a href="https://plus.google.com/discover" target="_blank"><i className="fa fa-google-plus"></i></a></li>
-                                <li><a href="https://twitter.com/" target="_blank"><i className="fa fa-twitter"></i></a></li>
-                                <li><a href="https://www.instagram.com/" target="_blank"><i className="fa fa-instagram"></i></a></li>
+                                <li>
+                                    <a href={`mailto:${MERCHANT_EMAIL_ID}`}><i className="fa fa-google" aria-hidden="true"></i></a>
+                                </li>
+                                <li>
+                                    <a href={'https://www.instagram.com/healthy_mania_?r=nametag'} target="_blank"><i className="fa fa-instagram" aria-hidden="true"></i></a>
+                                </li>
                             </ul>
                             <button className="wishlist-btn" onClick={() => addToWishlistClicked(item)}><i
                                 className="fa fa-heart"></i><span

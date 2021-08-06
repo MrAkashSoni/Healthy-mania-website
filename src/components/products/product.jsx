@@ -15,7 +15,8 @@ import { addToCart, addToCartUnsafe, addToWishlist } from '../../actions'
 import ImageZoom from './common/product/image-zoom'
 import SmallImages from './common/product/small-image'
 
-
+import { getProduct } from '../../actions/productActions'
+import store from '../../store';
 
 class LeftSideBar extends Component {
 
@@ -24,18 +25,32 @@ class LeftSideBar extends Component {
         this.state = {
             open: false,
             nav1: null,
-            nav2: null
+            nav2: null,
+            productItem: {},
         };
     }
 
     // document.getElementById('idOfElement').classList.add('newClassName');
 
+    componentWillMount(){
+        const getProduct = async () => {
+            const id = this.props.location.search.split('=')[1];
+            if (id) {
+                const response = store.dispatch(getProduct(id));
+                this.setState({
+                    productItem: response
+                })
+            }
+        }
+        getProduct();
+    }
 
     componentDidMount() {
         this.setState({
             nav1: this.slider1,
             nav2: this.slider2
         });
+     
     }
 
     filterClick() {
@@ -46,8 +61,12 @@ class LeftSideBar extends Component {
     }
 
     render() {
-        const { symbol, item, addToCart, addToCartUnsafe, addToWishlist } = this.props
-        console.log('props=-=-=-> ', this.props);
+        const { symbol, addToCart, addToCartUnsafe, addToWishlist } = this.props
+
+        const item = this.state.productItem;
+
+        console.log('item', item)
+
         var products = {
             slidesToShow: 1,
             slidesToScroll: 1,
@@ -63,12 +82,15 @@ class LeftSideBar extends Component {
             focusOnSelect: true
         };
 
+
+
         return (
             <div>
+                {console.log('product.jsc', item)}
                 {/*SEO Support*/}
                 <Helmet>
-                    <title>{`MultiKart | ${item.category} | ${item.name}`}</title>
-                    <meta name="description" content="Multikart – Multipurpose eCommerce React Template is a multi-use React template. It is designed to go well with multi-purpose websites. Multikart Bootstrap 4 Template will help you run multiple businesses." />
+                    <title>{`Healthy Mania | ${item.category} | ${item.name}`}</title>
+                    <meta name="description" content="Healthy Mania – Multipurpose eCommerce React Template is a multi-use React template. It is designed to go well with multi-purpose websites. Healthy Mania Bootstrap 4 Template will help you run multiple businesses." />
                 </Helmet>
                 {/*SEO Support End */}
 

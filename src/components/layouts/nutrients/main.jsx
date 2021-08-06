@@ -75,10 +75,12 @@ class Vegetables extends Component {
                                     <div className="row">
                                         <div className="col">
                                             <div className="slider-contain">
-                                                <div>
-                                                    <h4>save 10%</h4>
-                                                    <h1>fresh vegetables.</h1><a href="/shop" className="btn btn-solid">shop
-                                                        now</a></div>
+                                                <div className="slider-shop-now">
+                                                    <h4>{`           `}</h4>
+                                                    <h1>{`                  `}</h1><a href="/shop" className="btn btn-solid">
+                                                        shop now
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -91,10 +93,12 @@ class Vegetables extends Component {
                                     <div className="row">
                                         <div className="col">
                                             <div className="slider-contain">
-                                                <div>
-                                                    <h4>save upto 10%</h4>
-                                                    <h1>fresh vegetables</h1><a href="/shop" className="btn btn-solid">shop
-                                                        now</a></div>
+                                                <div className="slider-shop-now">
+                                                    <h4>{`           `}</h4>
+                                                    <h1>{`                  `}</h1><a href="/shop" className="btn btn-solid">
+                                                        shop now
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -162,29 +166,15 @@ class Vegetables extends Component {
                             <div className="row">
                                 <div className="col">
                                     <div className="banner-contain">
-                                        <h2>2018</h2>
+                                        {/* <h2>2018</h2>
                                         <h3>food market</h3>
-                                        <h4>special offer</h4>
+                                        <h4>special offer</h4> */}
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
-                {/*Parallax banner end*/}
-
-                {/*product-box slider*/}
-                {/* <Special
-                    products={products}
-                    symbol={Symbol}
-                    addToCart={handleAddToCart}
-                    addToWishlist={handleAddToWishList}
-                    incrementQty={handleIncrementQty}
-                    decrementQty={handleDecrementQty}
-                    removeFromCart={handleRemoveFromCart}
-                /> */}
-                {/*product-box slider end*/}
-
                 <ThemeSettings />
                 <FooterOne logoName={'logo.png'} />
             </div>

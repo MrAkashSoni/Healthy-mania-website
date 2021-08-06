@@ -40,11 +40,11 @@ class wishList extends Component {
                                                 <tbody key={index}>
                                                     <tr>
                                                         <td>
-                                                            <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${item.id}`}>
+                                                            <Link to={`${process.env.PUBLIC_URL}/product?id=${item.id}`}>
                                                                 <img src={item.picture} alt="" />
                                                             </Link>
                                                         </td>
-                                                        <td><Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${item.id}`}>{item.name}</Link>
+                                                        <td><Link to={`${process.env.PUBLIC_URL}/product?id=${item.id}`}>{item.name}</Link>
                                                             <div className="mobile-cart-content row">
                                                                 <div className="col-xs-3">
                                                                     <p>in stock</p>
