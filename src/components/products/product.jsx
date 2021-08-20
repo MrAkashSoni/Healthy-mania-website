@@ -32,25 +32,30 @@ class LeftSideBar extends Component {
 
     // document.getElementById('idOfElement').classList.add('newClassName');
 
-    componentWillMount(){
-        const getProduct = async () => {
-            const id = this.props.location.search.split('=')[1];
-            if (id) {
-                const response = store.dispatch(getProduct(id));
+    async componentDidUpdate() {
+        // const getProduct = async () => {
+        const id = this.props.location.search.split('=')[1];
+
+        if (id) {
+            console.log('id---> ', id)
+            const response = await store.dispatch(getProduct(id));
+            console.log('response--> ', response)
+            if (this.state.productItem === {} || this.state.productItem === false) {
                 this.setState({
                     productItem: response
                 })
             }
         }
-        getProduct();
+        // }
+        // getProduct();
     }
 
     componentDidMount() {
+        console.log('didmount')
         this.setState({
             nav1: this.slider1,
             nav2: this.slider2
         });
-     
     }
 
     filterClick() {
@@ -65,7 +70,7 @@ class LeftSideBar extends Component {
 
         const item = this.state.productItem;
 
-        console.log('item', item)
+        console.log('item-->', item)
 
         var products = {
             slidesToShow: 1,
@@ -97,7 +102,7 @@ class LeftSideBar extends Component {
                 <Breadcrumb parent={'Product'} title={item.name} />
 
                 {/*Section Start*/}
-                {(item) ?
+                {item ?
                     <section className="section-b-space">
                         <div className="collection-wrapper">
                             <div className="container">

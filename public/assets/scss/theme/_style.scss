@@ -14217,3 +14217,30 @@ body {
 
 
 
+
+
+
+.fixed {
+  .main-nav-center{
+    height: 50px;
+  }
+	.main-menu {
+		height: 80px;
+		.brand-logo {
+			img {
+				width: 100px;
+			}
+		}
+		.menu-right {
+			.icon-nav {
+				ul {
+					li {
+						img {
+							width: 20px;
+						}
+					}
+				}
+			}
+		}
+	}
+}

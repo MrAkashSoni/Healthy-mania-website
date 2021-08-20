@@ -49,7 +49,7 @@ export const getAllProducts = () => async (dispatch) => {
 
 export const getProduct = (id) => async (dispatch) => {
     try {
-        console.log('getProduct id', id)
+        console.log('getProduct id', `${BASE_URL}/${GET_PRODUCT}/${id}`)
         const response = await axios.get(`${BASE_URL}/${GET_PRODUCT}/${id}`);
         console.log('getProduct id', response)
         if (response.status === 200) {
@@ -59,7 +59,7 @@ export const getProduct = (id) => async (dispatch) => {
             return false;
         }
     } catch (error) {
-        console.log('getProduct id', error)
+        console.log('getProduct id error', error)
         if (error && error.response && error.response.data && error.response.data.message)
             toast.error(error.response.data.message);
         return false;
@@ -69,7 +69,7 @@ export const getProduct = (id) => async (dispatch) => {
 export const getAllCategory = () => async (dispatch) => {
     try {
         const response = await axios.get(`${BASE_URL}/${GET_ALL_CATEGORY}`);
-        console.log('getallcategoty response', response);
+        // console.log('getallcategoty response', response);
         if (response.status === 200) {
             dispatch(categories(response.data));
             return true;
