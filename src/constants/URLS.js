@@ -11,3 +11,5 @@ export const GET_PRODUCT = 'api/products';
 
 // category
 export const GET_ALL_CATEGORY = 'api/category';
+
+export const CHECKOUT = 'api/payments';

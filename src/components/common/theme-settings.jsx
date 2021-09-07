@@ -23,54 +23,55 @@ class ThemeSettings extends Component {
     componentWillMount() {
         window.addEventListener('scroll', this.handleScroll);
     }
-    componentWillUnmount() {
-        window.removeEventListener('scroll', this.handleScroll);
-    }
-    handleScroll = () => {
-        if (document.documentElement.scrollTop > 600) {
-            document.querySelector(".tap-top").style = "display: block";
-        } else {
-            document.querySelector(".tap-top").style = "display: none";
-        }
-    }
-    clickToTop() {
-        window.scroll({ top: 0, left: 0, behavior: 'smooth' })
-    }
-
     componentDidMount() {
         SlideUpDown('setting-title');
     }
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.handleScroll);
+    }
+    // handleScroll = () => {
+    //     if (document.documentElement.scrollTop > 600) {
+    //         document.querySelector(".tap-top").style = "display: block";
+    //     } else {
+    //         document.querySelector(".tap-top").style = "display: none";
+    //     }
+    // }
+    // clickToTop() {
+    //     window.scroll({ top: 0, left: 0, behavior: 'smooth' })
+    // }
 
-    openSetting = () => {
-        document.getElementById("setting_box").classList.add('open-setting');
-        document.getElementById("setting-icon").classList.add('open-icon');
-    }
-    closeSetting = () => {
-        document.getElementById("setting_box").classList.remove('open-setting');
-        document.getElementById("setting-icon").classList.remove('open-icon');
-    }
+
+
+    // openSetting = () => {
+    //     document.getElementById("setting_box").classList.add('open-setting');
+    //     document.getElementById("setting-icon").classList.add('open-icon');
+    // }
+    // closeSetting = () => {
+    //     document.getElementById("setting_box").classList.remove('open-setting');
+    //     document.getElementById("setting-icon").classList.remove('open-icon');
+    // }
 
     // Color Picker
-    changeColor(event, color) {
-        var elems = document.querySelectorAll(".color-box li");
-        [].forEach.call(elems, function (elemt) {
-            elemt.classList.remove('active');
-        })
+    // changeColor(event, color) {
+    //     var elems = document.querySelectorAll(".color-box li");
+    //     [].forEach.call(elems, function (elemt) {
+    //         elemt.classList.remove('active');
+    //     })
 
-        event.target.classList.add('active');
-        console.log(color)
-        document.getElementById("color").setAttribute("href", `${process.env.PUBLIC_URL}/assets/css/` + color + `.css`);
-    }
+    //     event.target.classList.add('active');
+    //     console.log(color)
+    //     document.getElementById("color").setAttribute("href", `${process.env.PUBLIC_URL}/assets/css/` + color + `.css`);
+    // }
 
-    ChangeRtl(divName) {
-        if (divName === 'RTL') {
-            document.body.classList.add('rtl');
-            this.setState({ divName: 'LTR' });
-        } else {
-            document.body.classList.remove('rtl');
-            this.setState({ divName: 'RTL' });
-        }
-    }
+    // ChangeRtl(divName) {
+    //     if (divName === 'RTL') {
+    //         document.body.classList.add('rtl');
+    //         this.setState({ divName: 'LTR' });
+    //     } else {
+    //         document.body.classList.remove('rtl');
+    //         this.setState({ divName: 'RTL' });
+    //     }
+    // }
 
     changeThemeLayout() {
         this.setState({
@@ -88,14 +89,14 @@ class ThemeSettings extends Component {
 
         return (
             <div>
-                <a href="javascript:void(0)" onClick={() => this.openSetting()}>
+                {/* <a href="javascript:void(0)" onClick={() => this.openSetting()}>
                     <div className="setting-sidebar" id="setting-icon">
                         <div>
                             <i className="fa fa-cog" aria-hidden="true"></i>
                         </div>
                     </div>
                 </a>
-                <div id="setting_box" className="setting-box">
+                 <div id="setting_box" className="setting-box">
                     <a href="javascript:void(0)" className="overlay" onClick={() => this.closeSetting()}></a>
                     <div className="setting_box_body">
                         <div onClick={() => this.closeSetting()}>
@@ -521,7 +522,7 @@ class ThemeSettings extends Component {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
                 <div className="sidebar-btn dark-light-btn">
                     <div className="dark-light">
                         <div
@@ -530,11 +531,11 @@ class ThemeSettings extends Component {
                         >{this.state.themeLayout ? 'Light' : 'Dark'}</div>
                     </div>
                 </div>
-                <div className="tap-top" onClick={this.clickToTop} style={tap_to_top}>
+                {/* <div className="tap-top" onClick={this.clickToTop} style={tap_to_top}>
                     <div>
                         <i className="fa fa-angle-double-up"></i>
                     </div>
-                </div>
+                </div> */}
 
                 <ToastContainer />
             </div>

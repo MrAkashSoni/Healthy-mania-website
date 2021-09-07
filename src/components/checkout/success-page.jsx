@@ -10,7 +10,7 @@ class orderSuccess extends Component {
 
     render() {
 
-        const { payment, items, symbol, orderTotal } = this.props.location.state;
+        const { payment = true, items, symbol, orderTotal } = this.props.location.state;
         var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
         var current = new Date();
         var next5days = new Date(Date.now() + 5 * 86400000);
@@ -44,9 +44,11 @@ class orderSuccess extends Component {
                                         {items.map((item, index) => {
                                             return <div className="row product-order-detail" key={index}>
                                                 <div className="col-3">
-                                                    <img src={item.variants ?
+                                                    {/* <img src={item.variants ?
                                                         item.variants[0].images
-                                                        : item.pictures[0]} alt="" className="img-fluid" />
+                                                        : item.pictures[0]} alt="" className="img-fluid" /> */}
+                                                    <img src={item.picture} alt="" className="img-fluid" />
+
                                                 </div>
                                                 <div className="col-3 order_detail">
                                                     <div>
@@ -71,8 +73,8 @@ class orderSuccess extends Component {
                                         <div className="total-sec">
                                             <ul>
                                                 <li>subtotal <span>{symbol}{orderTotal}</span></li>
-                                                <li>shipping <span>$0</span></li>
-                                                <li>tax(GST) <span>$0</span></li>
+                                                <li>shipping <span>{symbol}0</span></li>
+                                                <li>tax(GST) <span>{symbol}0</span></li>
                                             </ul>
                                         </div>
                                         <div className="final-total">

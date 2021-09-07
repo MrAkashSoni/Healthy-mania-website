@@ -8,6 +8,8 @@ import SimpleReactValidator from 'simple-react-validator';
 import Breadcrumb from "../common/breadcrumb";
 import { removeFromWishlist } from '../../actions'
 import { getCartTotal } from "../../services";
+import { checkout } from '../../actions/productActions'
+import store from '../../store';
 
 class checkOut extends Component {
 
@@ -20,7 +22,7 @@ class checkOut extends Component {
             last_name: '',
             phone: '',
             email: '',
-            country: '',
+            country: 'India',
             address: '',
             city: '',
             state: '',
@@ -28,6 +30,22 @@ class checkOut extends Component {
             create_account: ''
         }
         this.validator = new SimpleReactValidator();
+    }
+
+    componentDidMount = () => {
+        const user = JSON.parse(localStorage.getItem('user'))
+        console.log('componentmounted', (user));
+        this.setState({
+            first_name: user.first_name || '',
+            last_name: user.last_name || '',
+            phone: user.phone_number || '',
+            email: user.email || '',
+            country: 'India',
+            address: '',
+            city: '',
+            state: '',
+            pincode: '',
+        })
     }
 
     setStateFromInput = (event) => {
@@ -81,8 +99,49 @@ class checkOut extends Component {
         }
     }
 
+    onCheckout = async (checkoutItems) => {
+        if (this.validator.allValid()) {
+            console.log('checkoutItems', checkoutItems)
+            const items = {
+                amount: this.props.total,
+                callback_url: 'localhost:3000/',
+                address: this.state.address,
+                city: this.state.city,
+                state: this.state.state,
+                pincode: this.state.pincode,
+                country: this.state.country,
+                products: [],
+            };
+            checkoutItems.forEach((ele) => {
+                items.products.push({
+                    product_id: ele.id,
+                    qty: ele.qty,
+                })
+            })
+
+            // API call for payment
+            console.log('items', items);
+            const response = await store.dispatch(checkout(items));
+            console.log('resp', response)
+            // if (response) {
+            this.props.history.push({
+                pathname: '/order-success',
+                state: { items: checkoutItems, orderTotal: this.props.total, symbol: this.props.symbol }
+            })
+            // }
+
+        } else {
+            this.validator.showMessages();
+            // rerender to show messages for the first time
+            this.forceUpdate();
+        }
+    }
+
     render() {
         const { cartItems, symbol, total } = this.props;
+
+
+        console.log('cartItem', cartItems);
 
         // Paypal Integration
         const onSuccess = (payment) => {
@@ -154,10 +213,7 @@ class checkOut extends Component {
                                                 <div className="form-group col-md-12 col-sm-12 col-xs-12">
                                                     <div className="field-label">Country</div>
                                                     <select name="country" value={this.state.country} onChange={this.setStateFromInput}>
-                                                        <option>India</option>
-                                                        <option>South Africa</option>
-                                                        <option>United State</option>
-                                                        <option>Australia</option>
+                                                        <option value="India" >India</option>
                                                     </select>
                                                     {this.validator.message('country', this.state.country, 'required')}
                                                 </div>
@@ -201,7 +257,7 @@ class checkOut extends Component {
                                                     </ul>
                                                     <ul className="sub-total">
                                                         <li>Subtotal <span className="count">{symbol}{total}</span></li>
-                                                        <li>Shipping <div className="shipping">
+                                                        {/* <li>Shipping <div className="shipping">
                                                             <div className="shopping-option">
                                                                 <input type="checkbox" name="free-shipping" id="free-shipping" />
                                                                 <label htmlFor="free-shipping">Free Shipping</label>
@@ -211,7 +267,7 @@ class checkOut extends Component {
                                                                 <label htmlFor="local-pickup">Local Pickup</label>
                                                             </div>
                                                         </div>
-                                                        </li>
+                                                        </li> */}
                                                     </ul>
 
                                                     <ul className="total">
@@ -220,7 +276,7 @@ class checkOut extends Component {
                                                 </div>
 
                                                 <div className="payment-box">
-                                                    <div className="upper-box">
+                                                    {/* <div className="upper-box">
                                                         <div className="payment-options">
                                                             <ul>
                                                                 <li>
@@ -237,18 +293,23 @@ class checkOut extends Component {
                                                                 </li>
                                                             </ul>
                                                         </div>
-                                                    </div>
+                                                    </div> */}
                                                     {(total !== 0) ?
+                                                        <div className="text-right">
+                                                            <button type="button" className="btn-solid btn" onClick={() => this.onCheckout(cartItems)} >Place Order</button>
+                                                        </div>
+                                                        : ''}
+                                                    {/* {(total !== 0) ?
                                                         <div className="text-right">
                                                             {(this.state.payment === 'stripe') ? <button type="button" className="btn-solid btn" onClick={() => this.StripeClick()} >Place Order</button> :
                                                                 <PaypalExpressBtn env={'sandbox'} client={client} currency={'USD'} total={total} onError={onError} onSuccess={onSuccess} onCancel={onCancel} />}
                                                         </div>
-                                                        : ''}
+                                                        : ''} */}
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="row section-t-space">
+                                    {/* <div className="row section-t-space">
                                         <div className="col-lg-6">
                                             <div className="stripe-section">
                                                 <h5>stripe js example</h5>
@@ -297,7 +358,7 @@ class checkOut extends Component {
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> */}
                                 </form>
                             </div>
                         </div>

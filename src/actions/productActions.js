@@ -8,6 +8,7 @@ import {
     GET_ALL_PRODUCTS,
     GET_ALL_CATEGORY,
     GET_PRODUCT,
+    CHECKOUT,
 } from '../constants/URLS';
 
 export const fetchProductsBegin = () => ({
@@ -72,6 +73,20 @@ export const getAllCategory = () => async (dispatch) => {
         // console.log('getallcategoty response', response);
         if (response.status === 200) {
             dispatch(categories(response.data));
+            return true;
+        }
+    } catch (error) {
+        if (error && error.response && error.response.data && error.response.data.message)
+            toast.error(error.response.data.message);
+        return false;
+    }
+}
+
+export const checkout = (products) => async (dispatch) => {
+    try {
+        const response = await axios.post(`${BASE_URL}/${CHECKOUT}`, products);
+        console.log('checkout response', response);
+        if (response.status === 200) {
             return true;
         }
     } catch (error) {
