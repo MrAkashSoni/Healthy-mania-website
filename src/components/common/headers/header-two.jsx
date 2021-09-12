@@ -94,11 +94,11 @@ class HeaderTwo extends Component {
                                 <div className="main-menu border-section border-top-0">
                                     <div className="menu-left">
                                         <div className="navbar">
-                                            <a href="javascript:void(0)" onClick={this.openNav}>
+                                            {/* <a href="javascript:void(0)" onClick={this.openNav}>
                                                 <div className="bar-style"> <i className="fa fa-bars sidebar-bar" aria-hidden="true"></i></div>
-                                            </a>
+                                            </a> */}
                                             {/*SideBar Navigation Component*/}
-                                            <SideBar />
+                                            {/* <SideBar /> */}
                                         </div>
                                     </div>
                                     <div className="brand-logo layout2-logo">
