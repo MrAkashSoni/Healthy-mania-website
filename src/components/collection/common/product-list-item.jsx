@@ -68,7 +68,7 @@ class ProductListItem extends Component {
                                 <img src={`${vari}`} key={index} alt="" className="img-fluid" />
                             </div>
                         )} */}
-                        <Link to={`${process.env.PUBLIC_URL}/product?id=1${product.id}`} ><img
+                        <Link to={`${process.env.PUBLIC_URL}/product?id=${product.id}`} ><img
                             src={product.picture}
                             className="img-fluid"
                             alt="" /></Link>
@@ -103,7 +103,7 @@ class ProductListItem extends Component {
                         <div className="rating">
                             {RatingStars}
                         </div>
-                        <Link to={`${process.env.PUBLIC_URL}/product?id=1${product.id}`}>
+                        <Link to={`${process.env.PUBLIC_URL}/product?id=${product.id}`}>
                             <h6>{product.name}</h6>
                         </Link>
                         <h4>{symbol}{product.price - (product.price * product.discount / 100)}
@@ -171,7 +171,7 @@ class ProductListItem extends Component {
                                             </div>
                                             <div className="product-buttons">
                                                 <button className="btn btn-solid" onClick={() => onAddToCartClicked(product, this.state.quantity)} >add to cart</button>
-                                                <Link to={`${process.env.PUBLIC_URL}/product?id=1${product.id}`} className="btn btn-solid">view detail</Link>
+                                                <Link to={`${process.env.PUBLIC_URL}/product?id=${product.id}`} className="btn btn-solid">view detail</Link>
                                             </div>
                                         </div>
                                     </div>

@@ -85,11 +85,11 @@ class cartComponent extends Component {
                                                                   item.variants[0].images
                                                                   :item.pictures[0]} alt="" />
                                                     </Link> */}
-                                                            <Link to={`${process.env.PUBLIC_URL}/product?id=1${item.id}`}>
+                                                            <Link to={`${process.env.PUBLIC_URL}/product?id=${item.id}`}>
                                                                 <img src={item.picture} alt="" />
                                                             </Link>
                                                         </td>
-                                                        <td><Link to={`${process.env.PUBLIC_URL}/product?id=1${item.id}`}>{item.name}</Link>
+                                                        <td><Link to={`${process.env.PUBLIC_URL}/product?id=${item.id}`}>{item.name}</Link>
                                                             <div className="mobile-cart-content row">
                                                                 <div className="col-xs-3">
                                                                     <div className="qty-box">

@@ -109,7 +109,7 @@ class Vegetables extends Component {
                 </section>
 
                 {/*collection banner layout*/}
-                <section className="banner-padding absolute-banner pb-0">
+                {/* <section className="banner-padding absolute-banner pb-0">
                     <div className="container absolute-bg">
                         <div className="service p-0">
                             <div className="row">
@@ -143,7 +143,7 @@ class Vegetables extends Component {
                             </div>
                         </div>
                     </div>
-                </section>
+                </section> */}
                 {/*collection banner layout end*/}
 
                 {/*product section Start*/}
